@@ -24,12 +24,18 @@
     <ClCompile Include="rooms.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
+    <ClCompile Include="exits.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="world.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="rooms.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="exit.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

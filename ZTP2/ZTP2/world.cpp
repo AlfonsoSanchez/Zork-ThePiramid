@@ -3,15 +3,17 @@
 #include <string.h>
 #include "world.h"
 #include "rooms.h"
+#include "exit.h"
 
 World::World(){
 	room = new Rooms[12];
-	
+	exits = new Exit[28];
 
 
 
 }
 void World::CreateWorld(){
+	//Initation all rooms = name + description
 	const char *name[12] = { "Entrance", "Strange Tunnel", "Strangle Room", "Secret Room", "Main Hall Initation", "Main Hall Half", "Main Hall End", "Dicharge Room", "Strange Tunnel", "Ventilation Room", "Queen room", "King Room" };
 
 	for (int i = 0; i < 12; i++){  
