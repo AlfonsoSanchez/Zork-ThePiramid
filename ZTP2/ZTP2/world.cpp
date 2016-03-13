@@ -49,35 +49,87 @@ void World::CreateExits(){
 	strcpy_s(room[1].exitEast, "Entrance");
 	strcpy_s(room[1].exitWest, "Wall");
 	strcpy_s(room[1].exitSouth, "Strangle Room");
-	strcpy_s(room[0].down, "Floor");
-	strcpy_s(room[0].up, "Roof");
+	strcpy_s(room[1].down, "Floor");
+	strcpy_s(room[1].up, "Roof");
 
 	//Strangle Room:
 	strcpy_s(room[2].exitNorth, "Strangle Tunnel");
 	strcpy_s(room[2].exitEast, "Secret Room");
 	strcpy_s(room[2].exitWest, "Main Hall Initiation");
 	strcpy_s(room[2].exitSouth, "Wall");
-	strcpy_s(room[0].down, "Floor");
-	strcpy_s(room[0].up, "Roof");
+	strcpy_s(room[2].down, "Floor");
+	strcpy_s(room[2].up, "Roof");
 
 	//Secret Room:
 	strcpy_s(room[3].exitNorth, "Wall");
 	strcpy_s(room[3].exitEast, "Wall");
 	strcpy_s(room[3].exitWest, "Strangle Room");
 	strcpy_s(room[3].exitSouth, "Wall");
-	strcpy_s(room[0].down, "Floor");
-	strcpy_s(room[0].up, "Roof");
+	strcpy_s(room[3].down, "Floor");
+	strcpy_s(room[3].up, "Roof");
 
 	//Main Hall initiation
-	strcpy_s(room[3].exitNorth, "Wall");
-	strcpy_s(room[3].exitEast, "Strangle Room");
-	strcpy_s(room[3].exitWest, "Wall");
-	strcpy_s(room[3].exitSouth, "Wall");
-	strcpy_s(room[0].down, "Main Hall Middle");
-	strcpy_s(room[0].up, "Roof");
+	strcpy_s(room[4].exitNorth, "Wall");
+	strcpy_s(room[4].exitEast, "Strangle Room");
+	strcpy_s(room[4].exitWest, "Wall");
+	strcpy_s(room[4].exitSouth, "Wall");
+	strcpy_s(room[4].down, "Main Hall Middle");
+	strcpy_s(room[4].up, "Roof");
 
+	//Main Hall Half
 
+	strcpy_s(room[5].exitNorth, "Wall");
+	strcpy_s(room[5].exitEast, "Dicharge Room");
+	strcpy_s(room[5].exitWest, "Wall");
+	strcpy_s(room[5].exitSouth, "Main Hall End");
+	strcpy_s(room[5].down, "Floor");
+	strcpy_s(room[5].up, "Main Hall Initiation");
 
+	//Main Hall End
+	strcpy_s(room[6].exitNorth, "Dicharge room");
+	strcpy_s(room[6].exitEast, "King Room");
+	strcpy_s(room[6].exitWest, "Main Hall Half");
+	strcpy_s(room[6].exitSouth, "Queen Room");
+	strcpy_s(room[6].down, "Floor");
+	strcpy_s(room[6].up, "Roof");
 
+	//Dicharge Room
+	strcpy_s(room[7].exitNorth, "Wall");
+	strcpy_s(room[7].exitEast, "Strangle Tunnel");
+	strcpy_s(room[7].exitWest, "Main Hall Middle");
+	strcpy_s(room[7].exitSouth, "Main Hall End");
+	strcpy_s(room[7].down, "Floor");
+	strcpy_s(room[7].up, "Roof");
 
+	//Strungle Tunnel
+	strcpy_s(room[8].exitNorth, "Wall");
+	strcpy_s(room[8].exitEast, "Ventilation Room");
+	strcpy_s(room[8].exitWest, "Dicharge Room");
+	strcpy_s(room[8].exitSouth, "King Room");
+	strcpy_s(room[8].down, "Floor");
+	strcpy_s(room[8].up, "Roof");
+
+	//Ventilation room
+	strcpy_s(room[9].exitNorth, "Wall");
+	strcpy_s(room[9].exitEast, "Wall");
+	strcpy_s(room[9].exitWest, "Strungle Tunnel");
+	strcpy_s(room[9].exitSouth, "Wall");
+	strcpy_s(room[9].down, "Floor");
+	strcpy_s(room[9].up, "Roof");
+
+	//Queen room
+	strcpy_s(room[10].exitNorth, "Main Hall End");
+	strcpy_s(room[10].exitEast, "Wall");
+	strcpy_s(room[10].exitWest, "Wall");
+	strcpy_s(room[10].exitSouth, "Wall");
+	strcpy_s(room[10].down, "Floor");
+	strcpy_s(room[10].up, "Roof");
+
+	//King room
+	strcpy_s(room[11].exitNorth, "Wall");
+	strcpy_s(room[11].exitEast, "Strangle Room");
+	strcpy_s(room[11].exitWest, "Wall");
+	strcpy_s(room[11].exitSouth, "Wall");
+	strcpy_s(room[11].down, "Main Hall Middle");
+	strcpy_s(room[11].up, "Roof");
 }
