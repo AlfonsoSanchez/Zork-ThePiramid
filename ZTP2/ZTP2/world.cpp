@@ -12,7 +12,7 @@ World::World(){
 
 
 }
-void World::CreateWorld(){
+void World::CreateWorld()const{
 	//Initation all rooms = name + description
 	const char *name[12] = { "Entrance", "Strange Tunnel", "Strangle Room", "Secret Room", "Main Hall Initation", "Main Hall Half", "Main Hall End", "Dicharge Room", "Strange Tunnel", "Ventilation Room", "Queen room", "King Room" };
 
@@ -37,10 +37,44 @@ void World::CreateWorld(){
 }
 void World::CreateExits(){
 	//Entrance:
-	strcpy_s(room[0].exitentrace, "StrengleTunnel");
+	strcpy_s(room[0].exitNorth, "Wall");
+	strcpy_s(room[0].exitEast, "Strangle Tunnel");
+	strcpy_s(room[0].exitWest, "Wall");
+	strcpy_s(room[0].exitSouth, "Main Hall Initiation");
+	strcpy_s(room[0].down, "Floor");
+	strcpy_s(room[0].up, "Roof");
 
+	//Strangle Tunnel:
+	strcpy_s(room[1].exitNorth, "Wall");
+	strcpy_s(room[1].exitEast, "Entrance");
+	strcpy_s(room[1].exitWest, "Wall");
+	strcpy_s(room[1].exitSouth, "Strangle Room");
+	strcpy_s(room[0].down, "Floor");
+	strcpy_s(room[0].up, "Roof");
 
+	//Strangle Room:
+	strcpy_s(room[2].exitNorth, "Strangle Tunnel");
+	strcpy_s(room[2].exitEast, "Secret Room");
+	strcpy_s(room[2].exitWest, "Main Hall Initiation");
+	strcpy_s(room[2].exitSouth, "Wall");
+	strcpy_s(room[0].down, "Floor");
+	strcpy_s(room[0].up, "Roof");
 
+	//Secret Room:
+	strcpy_s(room[3].exitNorth, "Wall");
+	strcpy_s(room[3].exitEast, "Wall");
+	strcpy_s(room[3].exitWest, "Strangle Room");
+	strcpy_s(room[3].exitSouth, "Wall");
+	strcpy_s(room[0].down, "Floor");
+	strcpy_s(room[0].up, "Roof");
+
+	//Main Hall initiation
+	strcpy_s(room[3].exitNorth, "Wall");
+	strcpy_s(room[3].exitEast, "Strangle Room");
+	strcpy_s(room[3].exitWest, "Wall");
+	strcpy_s(room[3].exitSouth, "Wall");
+	strcpy_s(room[0].down, "Main Hall Middle");
+	strcpy_s(room[0].up, "Roof");
 
 
 

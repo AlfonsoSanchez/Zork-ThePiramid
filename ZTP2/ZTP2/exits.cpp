@@ -5,14 +5,14 @@
 
 Exit::Exit()
 {
-	const char* exitEntranceeast = { "Strangle Tunnel"};// Entrance
-	const char* exitEntrancesouth = {  "Main Hall Initation" };
+/*	 NO SIVE= const char* exitEntranceeast = "Strangle Tunnel";// Entrance
+	const char* exitEntrancesouth = "Main Hall Initation";
 
-	const char* exitStrTsouth = {  "Strangle Room" };//Strangle tunnel (floor0)
-	const char* exitStrTeast = { "Entrance" };
+	const char* exitStrTsouth =  "Strangle Room";//Strangle tunnel (floor0)
+	const char* exitStrTeast = "Entrance" ;
 
-	const char* exitStrRnorth = { "Strangle Tunnel" };// strangle Room (floor0)
-	const char* exitStrReast = { "Secret Room" };
+	const char* exitStrRnorth = "Strangle Tunnel";// strangle Room (floor0)
+	const char* exitStrReast =  "Secret Room";
 	const char* exitStrRwest = {  "Main Hall Initation" };
 
 	const char* exitSeR = { "Strangle Room" };// Secret Room
@@ -44,7 +44,7 @@ Exit::Exit()
 
 	const char* exitKRnorth = { "Main Hall End" }; //King Room
 	const char* exitKReast = { "Strangle Tunnel" }; //King Room
-
+	*/
 
 
 

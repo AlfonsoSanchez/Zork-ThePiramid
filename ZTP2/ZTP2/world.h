@@ -10,7 +10,7 @@ public:
 	World();
 	~World();
 
-	void CreateWorld();
+	void CreateWorld()const;
 	void CreateExits();
 
 	
