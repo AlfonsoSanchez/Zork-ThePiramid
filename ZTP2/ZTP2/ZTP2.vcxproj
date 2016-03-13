@@ -66,11 +66,13 @@
   <ItemGroup>
     <ClCompile Include="exits.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="rooms.cpp" />
     <ClCompile Include="world.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="exit.h" />
+    <ClInclude Include="player.h" />
     <ClInclude Include="rooms.h" />
     <ClInclude Include="world.h" />
   </ItemGroup>

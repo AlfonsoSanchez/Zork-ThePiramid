@@ -4,11 +4,12 @@
 #include "world.h"
 #include "rooms.h"
 #include "exit.h"
+#include "player.h"
 
 World::World(){
 	room = new Rooms[12];
 	exits = new Exit[28];
-
+	player = new Player;
 
 
 }
