@@ -35,3 +35,15 @@ void World::CreateWorld(){
 
 
 }
+void World::CreateExits(){
+	//Entrance:
+	strcpy_s(room[0].exitentrace, "StrengleTunnel");
+
+
+
+
+
+
+
+
+}

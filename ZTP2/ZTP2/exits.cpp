@@ -5,19 +5,45 @@
 
 Exit::Exit()
 {
-	const char* exitEntrance[2] = { "Strangle Tunnel", "Main Hall Initation" };// Entrance
-	const char* exitStrT[2] = { "Entrance", "Strangle Room" };//Strangle tunnel (floor0)
-	const char* exitStrR[3] = { "Strangle Tunnel", "Main Hall Initation", "Secret Room" };// strangle Room (floor0)
-	const char* exitSeR = { "Strangle Room" };// Secret Room
-	const char* exitMHI[3] = { "Entrance", "Strangle Tunnel","Main Hall Middle" };// Main hall initation
-	const char* exitMHM[3] = { "Main Hall End", "Main Hall Initation","Dicharge Room" };// Main Hall Midle ( enter in flor -1 down stairs)
-	const char* exitDR[3] = { "Main Hall Midle", "Main Hall End","Strangle Tunnel" };// Discharge Room
-	const char* exitStrT2[3] = { "Dicharge Room", "King Room","Secret Room: Ventilation Room" }; // Strangle tunnel 2 ( floor -1)
-	const char* exitVR = { "Strangle Tunnel"};// Ventilation Room
-	const char* exitMHE[4] = { "Main Hall Midle", "Queen Room","King Room","Dicharge Room" }; // Main Hall end
-	const char* exitQR = { "Main Hall End" }; //Queen Room
-	const char* exitKR[2] = { "Main Hall End", "Strangle Tunnel" }; //King Room
+	const char* exitEntranceeast = { "Strangle Tunnel"};// Entrance
+	const char* exitEntrancesouth = {  "Main Hall Initation" };
 
+	const char* exitStrTsouth = {  "Strangle Room" };//Strangle tunnel (floor0)
+	const char* exitStrTeast = { "Entrance" };
+
+	const char* exitStrRnorth = { "Strangle Tunnel" };// strangle Room (floor0)
+	const char* exitStrReast = { "Secret Room" };
+	const char* exitStrRwest = {  "Main Hall Initation" };
+
+	const char* exitSeR = { "Strangle Room" };// Secret Room
+
+	const char* exitMHInorth = { "Entrance" };// Main hall initation
+	const char* exitMHIdown = {  "Main Hall Middle" };
+	const char* exitMHIeast = { "Strangle Tunnel"};
+
+	const char* exitMHMup = { "Main Hall Initation" };// Main Hall Midle ( enter in flor -1 down stairs)
+	const char* exitMHMsouth = { "Main Hall End",  };
+	const char* exitMHMeast = {  "Dicharge Room" };
+
+	const char* exitDRnorth = { "Main Hall Middle" }; // Main Hall end
+	const char* exitDRsouth = { "Strangle Tunnel" };
+	const char* exitDRwest = { "Main Hall End" };
+
+	const char* exitStrT2east = {  "Secret Room: Ventilation Room" }; // Strangle tunnel 2 ( floor -1)
+	const char* exitStrT2south = { "Dicharge Room"}; 
+	const char* exitStrT2north = {  "King Room",  }; 
+
+	const char* exitMHEnorth = {  "Dicharge Room" }; // Main Hall end
+	const char* exitMHEsouth = {  "Queen Room" }; 
+	const char* exitMHEeast = {  "King Room"  }; 
+	const char* exitMHEwest = { "Main Hall Midle" }; 
+
+	const char* exitVR = { "Strangle Tunnel"};// Ventilation Room
+
+	const char* exitQR = { "Main Hall End" }; //Queen Room
+
+	const char* exitKRnorth = { "Main Hall End" }; //King Room
+	const char* exitKReast = { "Strangle Tunnel" }; //King Room
 
 
 
