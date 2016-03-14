@@ -3,6 +3,10 @@
 
 class Player{
 public:
+	char name[20];
+	int life;
+	Rooms position;
+
 	Player();
 	~Player();
 

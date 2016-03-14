@@ -8,7 +8,7 @@ class World{
 public:
 	Rooms* room = nullptr;
 	Exit* exits = nullptr;
-	Player * player;
+	Player * player = nullptr;
 
 	World();
 	~World();
