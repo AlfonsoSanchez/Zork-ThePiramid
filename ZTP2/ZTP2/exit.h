@@ -1,7 +1,10 @@
 #ifndef _EXIT_
 #define _EXIT_
 
-
+#include <stdio.h>
+#include <stdlib.h>
+#include "rooms.h"
+#include "exit.h"
 
 class Exit{
 public:
