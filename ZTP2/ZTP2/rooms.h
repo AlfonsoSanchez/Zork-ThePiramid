@@ -1,20 +1,26 @@
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef _ROOMS_
+#define _ROOMS_
+
 
 
 class Rooms{
 public:
-	char name[20];
-	char decription[100];
-	char exitNorth[20];
-	char exitSouth[20];
-	char exitWest[20];
-	char exitEast[20];
-	char down[20];
-	char up[20];
-	Rooms();
+	char name[50];
+	char decription[500];
+	
+	char exitNorth[200];
+	char exitSouth[200];
+	char exitWest[200];
+	char exitEast[200];
+	char down[200];
+	char up[200];
+	Rooms(){
 
+	};
+	~Rooms();
 
 
 
 };
+
+#endif

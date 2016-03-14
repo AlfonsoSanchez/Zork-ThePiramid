@@ -13,6 +13,11 @@ World::World(){
 
 
 }
+World::~World(){
+	delete[] room;
+	delete[] exits;
+	delete[] player;
+}
 void World::CreateWorld()const{
 	//Initation all rooms = name + description
 	const char *name[12] = { "Entrance", "Strange Tunnel", "Strangle Room", "Secret Room", "Main Hall Initation", "Main Hall Half", "Main Hall End", "Dicharge Room", "Strange Tunnel", "Ventilation Room", "Queen room", "King Room" };
@@ -37,6 +42,7 @@ void World::CreateWorld()const{
 
 }
 void World::CreateExits(){
+	
 	//Entrance:
 	strcpy_s(room[0].exitNorth, "Wall");
 	strcpy_s(room[0].exitEast, "Strangle Tunnel");

@@ -5,6 +5,7 @@
 
 Exit::Exit()
 {
+
 /*	 NO SIVE= const char* exitEntranceeast = "Strangle Tunnel";// Entrance
 	const char* exitEntrancesouth = "Main Hall Initation";
 
@@ -47,6 +48,12 @@ Exit::Exit()
 	*/
 
 
+
+
+
+}
+Exit::~Exit(){
+	
 
 
 
