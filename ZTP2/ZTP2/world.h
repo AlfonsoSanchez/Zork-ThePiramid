@@ -8,9 +8,9 @@
 
 class World{
 public:
-	Rooms* room = nullptr;
-	Exit* exits = nullptr;
-	Player* player = nullptr;
+	Rooms *room = nullptr;
+	Exit *exits = nullptr;
+	Player *player = nullptr;
 
 	World();
 	~World();

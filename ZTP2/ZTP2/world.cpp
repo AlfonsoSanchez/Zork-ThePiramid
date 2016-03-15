@@ -43,6 +43,8 @@ void World::CreateWorld()const{
 }
 void World::CreateExits(){
 
+	player[0].position = 0;
+
 	//Entrance:
 	exits[0].er = room[0];
 	exits[0].east = room[2];
