@@ -5,6 +5,9 @@
 #include "exit.h"
 #include "rooms.h"
 
+class Player;
+class Exit;
+class Rooms;
 
 int main(){
 	char move;
@@ -51,10 +54,8 @@ int main(){
 				p.position = 0;
 				break;
 			}
-			else{
-				printf("Wall");
-				break;
-			}
+			
+			
 		case 's':
 			if (p.position == 0){
 				printf(" %s: \n %s  \n", r.name[4], r.decription[4]);
@@ -88,11 +89,7 @@ int main(){
 				wincondition++;
 				break;
 			}
-			else{
-				printf("Wall");
-				break;
-			}
-
+		
 		case 'e':
 			if (p.position == 0){
 				printf(" %s: \n %s  \n", r.name[1], r.decription[1]);
@@ -154,11 +151,7 @@ int main(){
 				break;
 			}
 
-			else{
-				printf("Wall");
-				break;
-			}
-
+			
 		}
 		}while (wincondition == 0);
 
