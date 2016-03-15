@@ -10,7 +10,7 @@ class Player{
 public:
 	char name[20];
 	int life;
-	Rooms position;
+	int position;
 
 	Player();
 	~Player();
