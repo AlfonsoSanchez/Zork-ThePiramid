@@ -6,13 +6,11 @@
 #include "exit.h"
 #include "world.h"
 
-
 class Player{
-
 public:
 	char name[20];
 	int life;
-	int position;
+	Rooms position;
 
 	Player();
 	~Player();
