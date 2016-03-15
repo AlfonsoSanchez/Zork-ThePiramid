@@ -14,15 +14,16 @@ int main(){
 	Rooms r;
 	Player p;
 	w.CreateWorld();
-	p.position = w.room[0]; // That are "the entrance"
+
 	printf("Welcome to ZORK: The Pyramid\n");
 	printf("The Controls are : n/s/w/e/u/d  (north ,south, west, east, up, down) \n");
 	printf(" You are in : %s : \n %s", r.name[0], r.decription[0]);
 	do{
+		printf("Where do you go???  ");
+		fflush(stdin);
+		scanf_s("%c", &move);
 		switch (move){
-			printf("Where do you go???  ");
-			fflush(stdin);
-			scanf_s("%c", &move);
+			
 		case 'n':
 			if (p.position == 4){
 				printf(" %s: \n %s  \n", r.name[0], r.decription[0]);
@@ -34,26 +35,26 @@ int main(){
 				p.position = 1;
 				break;
 			}
-		}
-		if (p.position == 6){
-			printf(" %s: \n %s  \n", r.name[5], r.decription[5]);
-			p.position = 5;
-			break;
-		}
-		if (p.position == 8){
-			printf(" %s: \n %s  \n", r.name[7], r.decription[7]);
-			p.position = 7;
-			break;
-		}
-		if (p.position == 10){
-			printf(" %s: \n %s  \n", r.name[6], r.decription[6]);
-			p.position = 0;
-			break;
-		}
-		else{
-			printf("Wall");
-			break;
-		}
+
+			if (p.position == 6){
+				printf(" %s: \n %s  \n", r.name[5], r.decription[5]);
+				p.position = 5;
+				break;
+			}
+			if (p.position == 8){
+				printf(" %s: \n %s  \n", r.name[7], r.decription[7]);
+				p.position = 7;
+				break;
+			}
+			if (p.position == 10){
+				printf(" %s: \n %s  \n", r.name[6], r.decription[6]);
+				p.position = 0;
+				break;
+			}
+			else{
+				printf("Wall");
+				break;
+			}
 		case 's':
 			if (p.position == 0){
 				printf(" %s: \n %s  \n", r.name[4], r.decription[4]);
@@ -131,42 +132,43 @@ int main(){
 			}
 
 		case 'w':
-		if (p.position == 1){
-			printf(" %s: \n %s  \n", r.name[0], r.decription[0]);
-			p.position = 0;
-			break;
-		}
-		if (p.position == 2){
-			printf(" %s: \n %s  \n", r.name[4], r.decription[4]);
-			p.position = 4;
-			break;
-		}
+			if (p.position == 1){
+				printf(" %s: \n %s  \n", r.name[0], r.decription[0]);
+				p.position = 0;
+				break;
+			}
+			if (p.position == 2){
+				printf(" %s: \n %s  \n", r.name[4], r.decription[4]);
+				p.position = 4;
+				break;
+			}
 
-		if (p.position == 9){
-			printf(" %s: \n %s  \n", r.name[8], r.decription[8]);
-			p.position = 8;
-			break;
-		}
-		if (p.position == 7){
-			printf(" %s: \n %s  \n", r.name[5], r.decription[5]);
-			p.position = 5;
-			break;
-		}
+			if (p.position == 9){
+				printf(" %s: \n %s  \n", r.name[8], r.decription[8]);
+				p.position = 8;
+				break;
+			}
+			if (p.position == 7){
+				printf(" %s: \n %s  \n", r.name[5], r.decription[5]);
+				p.position = 5;
+				break;
+			}
 
-		else{
-			printf("Wall");
-			break;
+			else{
+				printf("Wall");
+				break;
+			}
+
 		}
+		}while (wincondition == 0);
 
-		
-	}while (wincondition == 0);
-
-	printf("You win");
-	/*printf("Your stay in %s  %s \n", r.room[0].name, r.room[0].decription);
-	for (int i = 1; i < 12; i++){
+		printf("You win");
+		/*printf("Your stay in %s  %s \n", r.room[0].name, r.room[0].decription);
+		for (int i = 1; i < 12; i++){
 		printf("%s, %s \n", r.room[i].name, r.room[i].decription);
-	}*/
+		}*/
+
+		system("pause");
+		return 0;
 	
-	system("pause");
-	return 0;
 }

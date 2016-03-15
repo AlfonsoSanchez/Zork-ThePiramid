@@ -10,9 +10,9 @@ public:
 	
 	
 	Rooms(){
-
 	};
-	~Rooms();
+	~Rooms(){  
+	};
 
 
 

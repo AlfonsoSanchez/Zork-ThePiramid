@@ -5,6 +5,9 @@
 #include "rooms.h"
 #include "exit.h"
 #include "player.h"
+class Player;
+class Exit;
+class Rooms;
 
 class World{
 public:

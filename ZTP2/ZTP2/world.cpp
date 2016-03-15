@@ -5,12 +5,15 @@
 #include "rooms.h"
 #include "exit.h"
 #include "player.h"
+using namespace std;
+
+#define _CRT_SECURE_NO_WARNINGS
 
 World::World(){
 	room = new Rooms[12];
 	exits = new Exit[28];
 	player = new Player[1];
-
+	
 
 }
 World::~World(){
