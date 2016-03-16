@@ -105,7 +105,7 @@ void World::createworld(){
 	//Strangle Room -> Secret Room
 	(exits + 4)->Origin = &room[2];
 	(exits + 4)->Destination = &room[3];
-	(exits + 4)->opendoor = true;
+	(exits + 4)->opendoor = false;
 	(exits + 4)->dir = Deast;
 
 	//Secret Room -> Strangle Room
@@ -201,19 +201,19 @@ void World::createworld(){
 	//Ventilation -> Strangle
 	(exits + 20)->Origin = &room[9];
 	(exits + 20)->Destination = &room[8];
-	(exits + 20)->opendoor = true;
+	(exits + 20)->opendoor = false;
 	(exits + 20)->dir = Dsouth;
 
 	//Strangle -> Ventilation
 	(exits + 21)->Origin = &room[9];
-	(exits + 21)->Destination = &room[9];
+	(exits + 21)->Destination = &room[8];
 	(exits + 21)->opendoor = true;
 	(exits + 21)->dir = Dnorth;
 
 	//MHE -> Queen
 	(exits + 22)->Origin = &room[6];
 	(exits + 22)->Destination = &room[10];
-	(exits + 22)->opendoor = true;
+	(exits + 22)->opendoor = false;
 	(exits + 22)->dir = Dsouth;
 
 	//Queen -> MHE
@@ -225,7 +225,7 @@ void World::createworld(){
 	//MHE -> King
 	(exits + 24)->Origin = &room[6];
 	(exits + 24)->Destination = &room[11];
-	(exits + 24)->opendoor = true;
+	(exits + 24)->opendoor = false;
 	(exits + 24)->dir = Deast;
 
 	//King -> MHE
@@ -237,7 +237,7 @@ void World::createworld(){
 	//Strangle Tunnel -> king
 	(exits + 26)->Origin = &room[8];
 	(exits + 26)->Destination = &room[11];
-	(exits + 26)->opendoor = true;
+	(exits + 26)->opendoor = false;
 	(exits + 26)->dir = Dsouth;
 
 	//King -> Strangle Tunnel
@@ -246,6 +246,148 @@ void World::createworld(){
 	(exits + 27)->opendoor = true;
 	(exits + 27)->dir = Dnorth;
 
+
+
+}
+void World::input(){
+	char move[25];
+	char helplayer[] = { "YOU CAN MOVEEE!!!!!!!! (use : n or north \n s or south \n e or east \n w or weast \n u or up\n d or down\n" };
+	char i;
+	printf("YOU CAN MOVEEE!!!!!!!! (use : n or north \n s or south \n e or east \n w or weast \n u or up\n d or down\n help or h \n");
+	printf(" Where do you do??? \n");
+	gets_s(move);
+
+	if (strcmp(move, "n") == 0 || strcmp(move, "north") == 0 || strcmp(move, "go north") == 0){
+
+		for (i = 0; i < 12; i++){
+			if ((exits + i)->Origin == player->PositionPlayer){
+				if ((exits + i)->dir == Dnorth){
+					if ((exits + i)->opendoor == true){
+
+						player->PositionPlayer = (exits + i)->Destination;
+						printf("You entered in %s\n", (exits + i)->Destination->name);
+						printf("%s\n",(exits +i)->Destination->description );
+						break;
+					}
+					else {
+						printf("THE DOOR IS CLOSED!!!!!!!!!!!!!!!!!!!");
+					}
+				}
+			}
+
+
+		}
+	}
+
+	if (strcmp(move, "s") == 0 || strcmp(move, "south") == 0 || strcmp(move, "go south") == 0){
+
+		for (i = 0; i < 12; i++){
+			if ((exits + i)->Origin == player->PositionPlayer){
+				if ((exits + i)->dir == Dsouth){
+					if ((exits + i)->opendoor == true){
+
+						player->PositionPlayer = (exits + i)->Destination;
+						printf("You entered in %s\n", (exits + i)->Destination->name);
+						printf("%s\n", (exits + i)->Destination->description);
+						break;
+					}
+					else {
+						printf("THE DOOR IS CLOSED!!!!!!!!!!!!!!!!!!!");
+					}
+				}
+			}
+
+
+		}
+	}
+
+	if (strcmp(move, "e") == 0 || strcmp(move, "east") == 0 || strcmp(move, "go east") == 0){
+
+		for (i = 0; i < 12; i++){
+			if ((exits + i)->Origin == player->PositionPlayer){
+				if ((exits + i)->dir == Deast){
+					if ((exits + i)->opendoor == true){
+
+						player->PositionPlayer = (exits + i)->Destination;
+						printf("You entered in %s\n", (exits + i)->Destination->name);
+						printf("%s\n", (exits + i)->Destination->description);
+						break;
+					}
+					else {
+						printf("THE DOOR IS CLOSED!!!!!!!!!!!!!!!!!!!");
+					}
+				}
+			}
+
+
+		}
+	}
+
+	if (strcmp(move, "w") == 0 || strcmp(move, "west") == 0 || strcmp(move, "go west") == 0){
+
+		for (i = 0; i < 12; i++){
+			if ((exits + i)->Origin == player->PositionPlayer){
+				if ((exits + i)->dir == Dwest){
+					if ((exits + i)->opendoor == true){
+
+						player->PositionPlayer = (exits + i)->Destination;
+						printf("You entered in %s\n", (exits + i)->Destination->name);
+						printf("%s\n", (exits + i)->Destination->description);
+						break;
+					}
+					else {
+						printf("THE DOOR IS CLOSED!!!!!!!!!!!!!!!!!!!");
+					}
+				}
+			}
+
+
+		}
+	}
+
+	if (strcmp(move, "u") == 0 || strcmp(move, "up") == 0 || strcmp(move, "go up") == 0){
+
+		for (i = 0; i < 12; i++){
+			if ((exits + i)->Origin == player->PositionPlayer){
+				if ((exits + i)->dir == Dup){
+					if ((exits + i)->opendoor == true){
+
+						player->PositionPlayer = (exits + i)->Destination;
+						printf("You entered in %s\n", (exits + i)->Destination->name);
+						printf("%s\n", (exits + i)->Destination->description);
+						break;
+					}
+					else {
+						printf("THE DOOR IS CLOSED!!!!!!!!!!!!!!!!!!!");
+					}
+				}
+			}
+
+
+		}
+	}
+
+	if (strcmp(move, "d") == 0 || strcmp(move, "down") == 0 || strcmp(move, "go down") == 0){
+
+		for (i = 0; i < 12; i++){
+			if ((exits + i)->Origin == player->PositionPlayer){
+				if ((exits + i)->dir == Dnorth){
+					if ((exits + i)->opendoor == true){
+
+						player->PositionPlayer = (exits + i)->Destination;
+						printf("You entered in %s\n", (exits + i)->Destination->name);
+						printf("%s\n", (exits + i)->Destination->description);
+						break;
+					}
+					else {
+						printf("THE DOOR IS CLOSED!!!!!!!!!!!!!!!!!!!");
+					}
+				}
+			}
+
+
+		}
+	}
 
 
 }
