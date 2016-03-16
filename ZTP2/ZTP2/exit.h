@@ -11,8 +11,9 @@ enum direction{
 };
 
 class Room;
+class Player;
 
-class Exits{
+class Exit{
 	char name[50];
 	char description[300];
 
@@ -21,9 +22,6 @@ class Exits{
 
 	bool opendoor;
 	direction dir;
-
-	Exits();
-	~Exits();
 
 };
 
