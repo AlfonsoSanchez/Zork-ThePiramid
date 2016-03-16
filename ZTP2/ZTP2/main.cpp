@@ -10,7 +10,7 @@ int main(){
 	World* world = new World;
 	world->createworld();
 	
-	printf("YOU CAN MOVEEE!!!!!!!! (use : n or north \n s or south \n e or east \n w or weast \n u or up\n d or down\n help or h \n");
+	printf("YOU CAN MOVEEE!!!!!!!! (use : n or north \n s or south \n e or east \n w or weast \n u or up\n d or down\n help or h \n or look + north/south/east/west  or open/close + north/south/east/west");
 	do
 	{
 		play=world->input();
