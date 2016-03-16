@@ -23,7 +23,7 @@ World::~World(){
 }
 void World::createworld(){
 	// use strcpy and first room are 1;
-	player->PositionPlayer = (room + 1);
+	player->PositionPlayer = (room + 0);
 
 
 	//Entrance 0
@@ -253,7 +253,7 @@ void World::input(){
 	char move[25];
 	char helplayer[] = { "YOU CAN MOVEEE!!!!!!!! (use : n or north \n s or south \n e or east \n w or weast \n u or up\n d or down\n" };
 	char i;
-	printf("YOU CAN MOVEEE!!!!!!!! (use : n or north \n s or south \n e or east \n w or weast \n u or up\n d or down\n help or h \n");
+	
 	printf(" Where do you do??? \n");
 	gets_s(move);
 
@@ -371,7 +371,7 @@ void World::input(){
 
 		for (i = 0; i < 12; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
-				if ((exits + i)->dir == Dnorth){
+				if ((exits + i)->dir == Ddown){
 					if ((exits + i)->opendoor == true){
 
 						player->PositionPlayer = (exits + i)->Destination;
@@ -387,6 +387,71 @@ void World::input(){
 
 
 		}
+	}
+
+	if (strcmp(move, "look north") == 0 ){
+
+		for (i = 0; i < 12; i++){
+			if ((exits + i)->Origin == player->PositionPlayer){
+				if ((exits + i)->dir == Dnorth){
+					printf("%s\n", (exits + i)->description);
+						break;
+					
+					
+				}
+			}
+}
+}
+
+	if (strcmp(move, "look south") == 0){
+
+		for (i = 0; i < 12; i++){
+			if ((exits + i)->Origin == player->PositionPlayer){
+				if ((exits + i)->dir == Dsouth){
+					printf("%s\n", (exits + i)->description);
+					break;
+
+
+				}
+			}
+		}
+	}
+	if (strcmp(move, "look east") == 0){
+
+		for (i = 0; i < 12; i++){
+			if ((exits + i)->Origin == player->PositionPlayer){
+				if ((exits + i)->dir == Deast){
+					printf("%s\n", (exits + i)->description);
+					break;
+
+
+				}
+			}
+		}
+	}
+	if (strcmp(move, "look west") == 0){
+
+		for (i = 0; i < 12; i++){
+			if ((exits + i)->Origin == player->PositionPlayer){
+				if ((exits + i)->dir == Dwest){
+					printf("%s\n", (exits + i)->description);
+					break;
+
+
+				}
+			}
+		}
+	}
+	if (strcmp(move, "look") == 0){
+
+		for (i = 0; i < 12; i++){
+			if ((exits + i)->Origin == player->PositionPlayer){
+				
+					printf("%s\n", (exits + i)->description);
+					break;
+
+}
+}
 	}
 
 
