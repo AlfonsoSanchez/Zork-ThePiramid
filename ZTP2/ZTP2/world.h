@@ -19,7 +19,7 @@ public:
 
 
 	void createworld();
-	void input();
+	bool input();
 
 
 };

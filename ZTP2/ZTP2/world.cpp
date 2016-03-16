@@ -249,7 +249,7 @@ void World::createworld(){
 
 
 }
-void World::input(){
+bool World::input(){
 	char move[25];
 	char helplayer[] = { "YOU CAN MOVEEE!!!!!!!! (use : n or north \n s or south \n e or east \n w or weast \n u or up\n d or down\n" };
 	char i;
@@ -589,5 +589,9 @@ void World::input(){
 				}
 			}
 		}
+	}
+	if (strcmp(move, "q") == 0 || strcmp(move, "quit") == 0){
+		return false;
+
 	}
 }
