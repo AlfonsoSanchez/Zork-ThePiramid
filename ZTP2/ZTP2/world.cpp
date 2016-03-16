@@ -6,8 +6,9 @@
 #include "rooms.h"
 #include "player.h"
 #include "exit.h"
-
-
+class Exit;
+class Room;
+class Player;
 World::World(){
 	room = new Room[12];
 	exits = new Exit[27];
@@ -73,6 +74,177 @@ void World::createworld(){
 	strcpy_s((room + 11)->name, "King Room");
 	strcpy_s((room + 11)->description, "You are in the room faraon not you believe it is a door where output is around you and thousands of treasures");
 
+
+
+
+	//Now Exits
+	//Entrance -> Strangle Tunnel ( 0-1)
+	(exits + 0)->Origin = &room[0];
+	(exits + 0)->Destination = &room[1];
+	(exits + 0)->opendoor = true;
+	(exits + 0)->dir = Deast;
+
+	//Strangle Tunnel -> Entrance (1-0)
+	(exits + 1)->Origin = &room[1];
+	(exits + 1)->Destination = &room[0];
+	(exits + 1)->opendoor = true;
+	(exits + 1)->dir = Dwest;
+
+	//Strangle Tunnel -> Strangle Room
+	(exits + 2)->Origin = &room[1];
+	(exits + 2)->Destination = &room[2];
+	(exits + 2)->opendoor = true;
+	(exits + 2)->dir = Dsouth;
+
+	//Strangle Room -> Strangle Tunnel
+	(exits + 3)->Origin = &room[2];
+	(exits + 3)->Destination = &room[1];
+	(exits + 3)->opendoor = true;
+	(exits + 3)->dir = Dnorth;
+
+	//Strangle Room -> Secret Room
+	(exits + 4)->Origin = &room[2];
+	(exits + 4)->Destination = &room[3];
+	(exits + 4)->opendoor = true;
+	(exits + 4)->dir = Deast;
+
+	//Secret Room -> Strangle Room
+	(exits + 5)->Origin = &room[3];
+	(exits + 5)->Destination = &room[2];
+	(exits + 5)->opendoor = true;
+	(exits + 5)->dir = Dwest;
+	
+	//Strangle Room -> Main Hall I
+	(exits + 6)->Origin = &room[2];
+	(exits + 6)->Destination = &room[4];
+	(exits + 6)->opendoor = true;
+	(exits + 6)->dir = Dwest;
+
+	// Main Hall I -> Strangle Room
+	(exits + 7)->Origin = &room[4];
+	(exits + 7)->Destination = &room[2];
+	(exits + 7)->opendoor = true;
+	(exits + 7)->dir = Deast;
+
+	// MHI -> Entrance
+	(exits + 8)->Origin = &room[4];
+	(exits + 8)->Destination = &room[1];
+	(exits + 8)->opendoor = true;
+	(exits + 8)->dir = Dnorth;
+	
+	//Entrance-> MHI
+	(exits + 9)->Origin = &room[0];
+	(exits + 9)->Destination = &room[4];
+	(exits + 9)->opendoor = true;
+	(exits + 9)->dir = Dsouth;
+
+	//MHI->MHM
+	(exits + 10)->Origin = &room[4];
+	(exits + 10)->Destination = &room[5];
+	(exits + 10)->opendoor = true;
+	(exits + 10)->dir = Ddown;
+
+	//MHM -> MHI
+	(exits +11 )->Origin = &room[5];
+	(exits + 11)->Destination = &room[4];
+	(exits + 11)->opendoor = true;
+	(exits + 11)->dir = Dup;
+
+	// MHM -> Dichage Room
+	(exits + 12)->Origin = &room[5];
+	(exits + 12)->Destination = &room[7];
+	(exits + 12)->opendoor = true;
+	(exits + 12)->dir = Deast;
+
+	//Dicharge Room -> MHM
+	(exits + 13)->Origin = &room[7];
+	(exits + 13)->Destination = &room[5];
+	(exits + 13)->opendoor = true;
+	(exits + 5)->dir = Dwest;
+
+	//MHM -> MHE
+	(exits + 14)->Origin = &room[5];
+	(exits + 14)->Destination = &room[6];
+	(exits + 14)->opendoor = true;
+	(exits + 14)->dir = Dsouth;
+
+	//MHE -> MHM
+	(exits + 15)->Origin = &room[6];
+	(exits + 15)->Destination = &room[5];
+	(exits + 15)->opendoor = true;
+	(exits + 15)->dir = Dnorth;
+
+	//Dicharge Room -> MHE
+	(exits + 16)->Origin = &room[7];
+	(exits + 16)->Destination = &room[6];
+	(exits + 16)->opendoor = true;
+	(exits + 16)->dir = Dsouth;
+
+	//MHE -> Dicharge Room
+	(exits + 17)->Origin = &room[6];
+	(exits + 17)->Destination = &room[7];
+	(exits + 17)->opendoor = true;
+	(exits + 17)->dir = Dnorth;
+
+	//Dicharge -> strangle TUnnel
+	(exits + 18)->Origin = &room[7];
+	(exits + 18)->Destination = &room[8];
+	(exits + 18)->opendoor = true;
+	(exits + 18)->dir = Deast;
+
+	//Strangle Tunnel -> Dicharge
+	(exits + 19)->Origin = &room[8];
+	(exits + 19)->Destination = &room[7];
+	(exits + 19)->opendoor = true;
+	(exits + 19)->dir = Dwest;
+
+	//Ventilation -> Strangle
+	(exits + 20)->Origin = &room[9];
+	(exits + 20)->Destination = &room[8];
+	(exits + 20)->opendoor = true;
+	(exits + 20)->dir = Dsouth;
+
+	//Strangle -> Ventilation
+	(exits + 21)->Origin = &room[9];
+	(exits + 21)->Destination = &room[9];
+	(exits + 21)->opendoor = true;
+	(exits + 21)->dir = Dnorth;
+
+	//MHE -> Queen
+	(exits + 22)->Origin = &room[6];
+	(exits + 22)->Destination = &room[10];
+	(exits + 22)->opendoor = true;
+	(exits + 22)->dir = Dsouth;
+
+	//Queen -> MHE
+	(exits + 23)->Origin = &room[10];
+	(exits + 23)->Destination = &room[6];
+	(exits + 23)->opendoor = true;
+	(exits + 23)->dir = Dnorth;
+
+	//MHE -> King
+	(exits + 24)->Origin = &room[6];
+	(exits + 24)->Destination = &room[11];
+	(exits + 24)->opendoor = true;
+	(exits + 24)->dir = Deast;
+
+	//King -> MHE
+	(exits + 25)->Origin = &room[11];
+	(exits + 25)->Destination = &room[6];
+	(exits + 25)->opendoor = true;
+	(exits + 25)->dir = Dwest;
+
+	//Strangle Tunnel -> king
+	(exits + 26)->Origin = &room[8];
+	(exits + 26)->Destination = &room[11];
+	(exits + 26)->opendoor = true;
+	(exits + 26)->dir = Dsouth;
+
+	//King -> Strangle Tunnel
+	(exits + 27)->Origin = &room[11];
+	(exits + 27)->Destination = &room[8];
+	(exits + 27)->opendoor = true;
+	(exits + 27)->dir = Dnorth;
 
 
 

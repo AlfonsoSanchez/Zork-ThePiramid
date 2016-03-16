@@ -14,7 +14,7 @@ public:
 	~World();
 
 	Room* room;
-	Exits* exits;
+	Exit* exits;
 	Player* player;
 
 

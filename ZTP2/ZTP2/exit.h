@@ -5,7 +5,7 @@ enum direction{
 	Dnorth,
 	Dsouth,
 	Dwest,
-	Dest,
+	Deast,
 	Ddown,
 	Dup,
 };
@@ -14,6 +14,7 @@ class Room;
 class Player;
 
 class Exit{
+public:
 	char name[50];
 	char description[300];
 
@@ -22,6 +23,7 @@ class Exit{
 
 	bool opendoor;
 	direction dir;
+
 
 };
 
