@@ -128,7 +128,7 @@ void World::createworld(){
 
 	// MHI -> Entrance
 	(exits + 8)->Origin = &room[4];
-	(exits + 8)->Destination = &room[1];
+	(exits + 8)->Destination = &room[0];
 	(exits + 8)->opendoor = true;
 	(exits + 8)->dir = Dnorth;
 	
@@ -394,7 +394,7 @@ bool World::input(){
 		for (i = 0; i < 12; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dnorth){
-					printf("%s\n", (exits + i)->description);
+					printf("%s\n", (exits + i)->Destination->description);
 						break;
 					
 					
@@ -408,7 +408,7 @@ bool World::input(){
 		for (i = 0; i < 12; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dsouth){
-					printf("%s\n", (exits + i)->description);
+					printf("%s\n", (exits + i)->Destination->description);
 					break;
 
 
@@ -434,7 +434,7 @@ bool World::input(){
 		for (i = 0; i < 12; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dwest){
-					printf("%s\n", (exits + i)->description);
+					printf("%s\n", (exits + i)->Destination->description);
 					break;
 
 
@@ -447,7 +447,7 @@ bool World::input(){
 		for (i = 0; i < 12; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				
-					printf("%s\n", (exits + i)->description);
+				printf("%s\n", (exits + i)->Destination->description);
 					break;
 
 }
@@ -460,7 +460,7 @@ bool World::input(){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dnorth){
 					if ((exits + i)->opendoor == false)
-						(exits + i)->opendoor == true;
+						(exits + i)->opendoor = true;
 					printf("Ther door are open now");
 					break;
 
@@ -477,7 +477,7 @@ bool World::input(){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dsouth){
 					if ((exits + i)->opendoor == false)
-						(exits + i)->opendoor == true;
+						(exits + i)->opendoor = true;
 					printf("Ther door are open now");
 					break;
 
@@ -494,7 +494,7 @@ bool World::input(){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Deast){
 					if ((exits + i)->opendoor == false)
-						(exits + i)->opendoor == true;
+						(exits + i)->opendoor = true;
 					printf("Ther door are open now");
 					break;
 
@@ -511,7 +511,7 @@ bool World::input(){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dwest){
 					if ((exits + i)->opendoor == false)
-						(exits + i)->opendoor == true;
+						(exits + i)->opendoor = true;
 					printf("Ther door are open now");
 					break;
 
@@ -528,7 +528,7 @@ bool World::input(){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Deast){
 					if ((exits + i)->opendoor == true)
-						(exits + i)->opendoor == false;
+						(exits + i)->opendoor = false;
 					printf("Ther door are open now");
 					break;
 
@@ -545,7 +545,7 @@ bool World::input(){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dnorth){
 					if ((exits + i)->opendoor == true)
-						(exits + i)->opendoor == false;
+						(exits + i)->opendoor = false;
 					printf("Ther door are open now");
 					break;
 
@@ -562,7 +562,7 @@ bool World::input(){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dsouth){
 					if ((exits + i)->opendoor == true)
-						(exits + i)->opendoor == false;
+						(exits + i)->opendoor = false;
 					printf("Ther door are open now");
 					break;
 
@@ -579,7 +579,7 @@ bool World::input(){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dwest){
 					if ((exits + i)->opendoor == true)
-						(exits + i)->opendoor == false;
+						(exits + i)->opendoor = false;
 					printf("Ther door are open now");
 					break;
 
@@ -590,8 +590,9 @@ bool World::input(){
 			}
 		}
 	}
-	if (strcmp(move, "q") == 0 || strcmp(move, "quit") == 0){
+	else if (strcmp(move, "q") == 0 || strcmp(move, "quit") == 0){
 		return false;
 
 	}
+	return true;
 }

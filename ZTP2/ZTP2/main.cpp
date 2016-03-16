@@ -19,7 +19,7 @@ int main(){
 	delete world;
 
 	printf("Thanks for play");
-
+	getchar();
 
 	return 0;
 
