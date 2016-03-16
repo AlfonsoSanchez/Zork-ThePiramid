@@ -454,5 +454,72 @@ void World::input(){
 }
 	}
 
+	if (strcmp(move, "open north") == 0){
 
+		for (i = 0; i < 12; i++){
+			if ((exits + i)->Origin == player->PositionPlayer){
+				if ((exits + i)->dir == Dnorth){
+					if ((exits + i)->opendoor == false)
+						(exits + i)->opendoor == true;
+					printf("Ther door are open now");
+					break;
+
+				}
+				else {
+					printf("The door is already open");
+				}
+			}
+		}
+	}
+	if (strcmp(move, "open south") == 0){
+
+		for (i = 0; i < 12; i++){
+			if ((exits + i)->Origin == player->PositionPlayer){
+				if ((exits + i)->dir == Dsouth){
+					if ((exits + i)->opendoor == false)
+						(exits + i)->opendoor == true;
+					printf("Ther door are open now");
+					break;
+
+				}
+				else {
+					printf("The door is already open");
+				}
+			}
+		}
+	}
+	if (strcmp(move, "open east") == 0){
+
+		for (i = 0; i < 12; i++){
+			if ((exits + i)->Origin == player->PositionPlayer){
+				if ((exits + i)->dir == Deast){
+					if ((exits + i)->opendoor == false)
+						(exits + i)->opendoor == true;
+					printf("Ther door are open now");
+					break;
+
+				}
+				else {
+					printf("The door is already open");
+				}
+			}
+		}
+	}
+	if (strcmp(move, "open west") == 0){
+
+		for (i = 0; i < 12; i++){
+			if ((exits + i)->Origin == player->PositionPlayer){
+				if ((exits + i)->dir == Dwest){
+					if ((exits + i)->opendoor == false)
+						(exits + i)->opendoor == true;
+					printf("Ther door are open now");
+					break;
+
+				}
+				else {
+					printf("The door is already open");
+				}
+			}
+		}
+	}
 }
