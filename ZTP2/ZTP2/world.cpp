@@ -11,7 +11,7 @@ class Room;
 class Player;
 World::World(){
 	room = new Room[12];
-	exits = new Exit[27];
+	exits = new Exit[28];
 	player = new Player[1];
 
 }
@@ -78,7 +78,10 @@ void World::createworld(){
 
 
 	//Now Exits
+	//Entrance
+	
 	//Entrance -> Strangle Tunnel ( 0-1)
+
 	(exits + 0)->Origin = &room[0];
 	(exits + 0)->Destination = &room[1];
 	(exits + 0)->opendoor = true;
@@ -145,7 +148,7 @@ void World::createworld(){
 	(exits + 10)->dir = Ddown;
 
 	//MHM -> MHI
-	(exits +11 )->Origin = &room[5];
+	(exits + 11)->Origin = &room[5];
 	(exits + 11)->Destination = &room[4];
 	(exits + 11)->opendoor = true;
 	(exits + 11)->dir = Dup;
@@ -160,7 +163,7 @@ void World::createworld(){
 	(exits + 13)->Origin = &room[7];
 	(exits + 13)->Destination = &room[5];
 	(exits + 13)->opendoor = true;
-	(exits + 5)->dir = Dwest;
+	(exits + 13)->dir = Dwest;
 
 	//MHM -> MHE
 	(exits + 14)->Origin = &room[5];
@@ -259,7 +262,7 @@ bool World::input(){
 
 	if (strcmp(move, "n") == 0 || strcmp(move, "north") == 0 || strcmp(move, "go north") == 0){
 
-		for (i = 0; i < 12; i++){
+		for (i = 0; i < 28; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dnorth){
 					if ((exits + i)->opendoor == true){
@@ -281,7 +284,7 @@ bool World::input(){
 
 	if (strcmp(move, "s") == 0 || strcmp(move, "south") == 0 || strcmp(move, "go south") == 0){
 
-		for (i = 0; i < 12; i++){
+		for (i = 0; i < 28; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dsouth){
 					if ((exits + i)->opendoor == true){
@@ -303,7 +306,7 @@ bool World::input(){
 
 	if (strcmp(move, "e") == 0 || strcmp(move, "east") == 0 || strcmp(move, "go east") == 0){
 
-		for (i = 0; i < 12; i++){
+		for (i = 0; i < 28; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Deast){
 					if ((exits + i)->opendoor == true){
@@ -325,7 +328,7 @@ bool World::input(){
 
 	if (strcmp(move, "w") == 0 || strcmp(move, "west") == 0 || strcmp(move, "go west") == 0){
 
-		for (i = 0; i < 12; i++){
+		for (i = 0; i < 28; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dwest){
 					if ((exits + i)->opendoor == true){
@@ -347,7 +350,7 @@ bool World::input(){
 
 	if (strcmp(move, "u") == 0 || strcmp(move, "up") == 0 || strcmp(move, "go up") == 0){
 
-		for (i = 0; i < 12; i++){
+		for (i = 0; i < 28; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dup){
 					if ((exits + i)->opendoor == true){
@@ -369,7 +372,7 @@ bool World::input(){
 
 	if (strcmp(move, "d") == 0 || strcmp(move, "down") == 0 || strcmp(move, "go down") == 0){
 
-		for (i = 0; i < 12; i++){
+		for (i = 0; i < 28; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Ddown){
 					if ((exits + i)->opendoor == true){
@@ -391,7 +394,7 @@ bool World::input(){
 
 	if (strcmp(move, "look north") == 0 ){
 
-		for (i = 0; i < 12; i++){
+		for (i = 0; i < 28; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dnorth){
 					printf("%s\n", (exits + i)->Destination->description);
@@ -405,7 +408,7 @@ bool World::input(){
 
 	if (strcmp(move, "look south") == 0){
 
-		for (i = 0; i < 12; i++){
+		for (i = 0; i < 28; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dsouth){
 					printf("%s\n", (exits + i)->Destination->description);
@@ -418,7 +421,7 @@ bool World::input(){
 	}
 	if (strcmp(move, "look east") == 0){
 
-		for (i = 0; i < 12; i++){
+		for (i = 0; i < 28; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Deast){
 					printf("%s\n", (exits + i)->description);
@@ -431,7 +434,7 @@ bool World::input(){
 	}
 	if (strcmp(move, "look west") == 0){
 
-		for (i = 0; i < 12; i++){
+		for (i = 0; i < 28; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dwest){
 					printf("%s\n", (exits + i)->Destination->description);
@@ -444,7 +447,7 @@ bool World::input(){
 	}
 	if (strcmp(move, "look") == 0){
 
-		for (i = 0; i < 12; i++){
+		for (i = 0; i < 28; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				
 				printf("%s\n", (exits + i)->Destination->description);
@@ -456,7 +459,7 @@ bool World::input(){
 
 	if (strcmp(move, "open north") == 0){
 
-		for (i = 0; i < 12; i++){
+		for (i = 0; i < 28; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dnorth){
 					if ((exits + i)->opendoor == false)
@@ -473,7 +476,7 @@ bool World::input(){
 	}
 	if (strcmp(move, "open south") == 0){
 
-		for (i = 0; i < 12; i++){
+		for (i = 0; i < 28; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dsouth){
 					if ((exits + i)->opendoor == false)
@@ -490,7 +493,7 @@ bool World::input(){
 	}
 	if (strcmp(move, "open east") == 0){
 
-		for (i = 0; i < 12; i++){
+		for (i = 0; i < 28; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Deast){
 					if ((exits + i)->opendoor == false)
@@ -507,7 +510,7 @@ bool World::input(){
 	}
 	if (strcmp(move, "open west") == 0){
 
-		for (i = 0; i < 12; i++){
+		for (i = 0; i < 28; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dwest){
 					if ((exits + i)->opendoor == false)
@@ -524,7 +527,7 @@ bool World::input(){
 	}
 	if (strcmp(move, "close east") == 0){
 
-		for (i = 0; i < 12; i++){
+		for (i = 0; i < 28; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Deast){
 					if ((exits + i)->opendoor == true)
@@ -541,7 +544,7 @@ bool World::input(){
 	}
 	if (strcmp(move, "close north") == 0){
 
-		for (i = 0; i < 12; i++){
+		for (i = 0; i < 28; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dnorth){
 					if ((exits + i)->opendoor == true)
@@ -558,7 +561,7 @@ bool World::input(){
 	}
 	if (strcmp(move, "close south") == 0){
 
-		for (i = 0; i < 12; i++){
+		for (i = 0; i < 28; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dsouth){
 					if ((exits + i)->opendoor == true)
@@ -575,7 +578,7 @@ bool World::input(){
 	}
 	if (strcmp(move, "close west") == 0){
 
-		for (i = 0; i < 12; i++){
+		for (i = 0; i < 28; i++){
 			if ((exits + i)->Origin == player->PositionPlayer){
 				if ((exits + i)->dir == Dwest){
 					if ((exits + i)->opendoor == true)
