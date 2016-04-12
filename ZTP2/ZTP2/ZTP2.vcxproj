@@ -67,6 +67,7 @@
     <ClCompile Include="exits.cpp" />
     <ClCompile Include="item.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mSTRING.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="rooms.cpp" />
     <ClCompile Include="world.cpp" />
@@ -74,6 +75,7 @@
   <ItemGroup>
     <ClInclude Include="exit.h" />
     <ClInclude Include="item.h" />
+    <ClInclude Include="mString.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="rooms.h" />
     <ClInclude Include="world.h" />

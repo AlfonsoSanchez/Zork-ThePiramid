@@ -6,7 +6,7 @@
 class Room;
 class Exit;
 class Player;
-
+class Item;
 
 class World{
 public:
@@ -16,12 +16,12 @@ public:
 	Room* room;
 	Exit* exits;
 	Player* player;
-
+	Item * item;
 
 	void createworld();
 	bool input();
-
-
+	void createitem();
+	
 };
 
 

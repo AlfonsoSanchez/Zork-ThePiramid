@@ -6,20 +6,23 @@
 #include "rooms.h"
 #include "player.h"
 #include "exit.h"
+#include "item.h"
+
 class Exit;
 class Room;
 class Player;
+class Item;
 World::World(){
 	room = new Room[12];
 	exits = new Exit[28];
 	player = new Player[1];
-
+	item = new Item[1];
 }
 World::~World(){
 	delete[] room;
 	delete[] exits;
 	delete[] player;
-
+	delete[] item;
 }
 void World::createworld(){
 	// use strcpy and first room are 1;
@@ -249,7 +252,7 @@ void World::createworld(){
 	(exits + 27)->opendoor = true;
 	(exits + 27)->dir = Dnorth;
 
-
+	
 
 }
 bool World::input(){
@@ -598,4 +601,12 @@ bool World::input(){
 
 	}
 	return true;
+}
+void World::createitem(){
+	//Health potion
+	strcpy_s(item[0].name, "Health potion");
+	strcpy_s(item[0].description, "retore 50% life");
+	(item + 0)->localitation = &room[0];
+
+
 }

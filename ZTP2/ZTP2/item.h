@@ -15,7 +15,7 @@ public:
 	char name[50];
 	char description[50];
 	StatsItem stit;
-
+	Room* localitation;
 	Item();
 	~Item();
 
