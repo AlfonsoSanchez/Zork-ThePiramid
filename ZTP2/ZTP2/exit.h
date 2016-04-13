@@ -22,6 +22,7 @@ public:
 	direction dir;
 public:
 	Exit();
+	Exit(const char*, const char*, Room*, Room*, const bool);
 	~Exit();
 
 };

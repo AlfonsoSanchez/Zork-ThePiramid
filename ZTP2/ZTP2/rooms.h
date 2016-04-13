@@ -1,14 +1,14 @@
 #ifndef _Room_
 #define _Room_
 
+#include "Entity.h"
 
-
-class Room{
+class Room : public Entity{
 public:
-	char name[50];
-	char description[300];
+	
 
 	Room(); //constructor
+	Room(const char*, const char*);
 	~Room();//destrictor
 
 

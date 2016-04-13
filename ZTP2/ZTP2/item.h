@@ -1,23 +1,21 @@
 #ifndef _ITEM_
 #define _ITEM_
-
-class Room;
-enum StatsItem{
-	atack,
-	health,
-	armour,
+#include "rooms.h"
+#include "exit.h"
+#include "Entity.h"
 
 
-};
-
-class Item{
+class Item :public Entity{
 public:
-	char name[50];
-	char description[50];
-	StatsItem stit;
-	Room* localitation;
+	Room* localitation = nullptr;
 	Item();
 	~Item();
+	
+	int atack;
+	int special;
+	bool invent;
+	bool equiped;
+	bool equipable;
 
 };
 
