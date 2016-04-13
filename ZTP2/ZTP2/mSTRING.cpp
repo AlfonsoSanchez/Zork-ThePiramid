@@ -1,37 +1,65 @@
 #include"mString.h"
-
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include "world.h"
+//tokenize X. rest V
 const char* mstring::Str() const{
 	return buffer;
 }
 mstring::mstring(){
 	maxcapacity = 1;
 	buffer = new char[maxcapacity];
+	strcpy_s(buffer, maxcapacity, "\0");
 }
 
-mstring::mstring(const char* STR){
-	int len = (strlen(STR)) + 1;
-	maxcapacity = len;
-	buffer = new char[len];
-	strcpy_s(buffer, len, STR);
-	printf("La clase sting %s se esta construyendo\n", buffer);
+mstring::mstring(const char* str){
+	maxcapacity = strlen(str) + 1;
+	buffer = new char[maxcapacity];
+	strcpy_s(buffer, maxcapacity, str);
 }
 
-mstring::mstring(const mstring& otherclas) : buffer(otherclas.buffer){
-	int len = (strlen(otherclas.buffer)) + 1;
-	maxcapacity = len;
-	buffer = new char[len];
-	strcpy_s(buffer, len, otherclas.buffer);
+mstring::mstring(const mstring& str){
+	maxcapacity = str.lenght() + 1;
+	buffer = new char[maxcapacity];
+	strcpy_s(buffer, maxcapacity, str.buffer);
+}
+mstring::~mstring(){
+	delete[] buffer;
+
 }
 
-unsigned int mstring::lenght(){
-	unsigned int i = strlen(buffer);
-	return i;
+const char*mstring::c_str()const{
+	return buffer;
+
+}
+unsigned int mstring::lenght() const{
+	return strlen(buffer);
 }
 
 bool mstring::empty() const{
 	return strlen(buffer) == 0;
+	
 }
 
+unsigned int mstring::c_capactity()const{
+	return maxcapacity;
+}
+void  mstring::clean()
+{
+	buffer[0] = '\0';
+}
+
+mstring mstring::operator+(const mstring& str){
+	mstring res;
+	unsigned int lenght1 = strlen(buffer);
+	unsigned int lenght2 = strlen(buffer);
+	maxcapacity = (lenght1 + lenght2 + 1); // +1 = \0
+	res.buffer = new char[maxcapacity];
+	strcpy_s(res.buffer, maxcapacity, buffer);
+	strcpy_s(res.buffer, maxcapacity, str.buffer);
+	return res;
+}
 bool mstring::operator ==(const mstring& otherclas) const{
 	return strcmp(buffer, otherclas.buffer) == 0;
 }
@@ -44,62 +72,64 @@ bool mstring::operator !=(const char* otherstring) const{
 	return strcmp(buffer, otherstring) != 0;
 }
 
-void mstring::operator =(const mstring& otherclas){
-	int lent = (strlen(otherclas.buffer) + 1);
+void mstring::operator =(const mstring& str){
+	
+	if (str.maxcapacity > maxcapacity){
+		delete[]buffer;
+		maxcapacity = str.maxcapacity;
+		buffer = new char[maxcapacity];
+	}
+	strcpy_s(buffer, maxcapacity, str.buffer);
+}
+
+void mstring::operator =(const char* str){
+	int lent = (strlen(str) + 1);
 	if (maxcapacity < lent){
 		delete[]buffer;
 		maxcapacity = lent;
 		buffer = new char[maxcapacity];
 	}
-	strcpy_s(buffer, maxcapacity, otherclas.buffer);
+	strcpy_s(buffer, maxcapacity, str);
 }
 
-void mstring::operator =(const char* otherstring){
-	int lent = (strlen(otherstring) + 1);
-	if (maxcapacity < lent){
+
+void mstring::operator +=(const mstring& str){
+	char* temp = nullptr;
+	temp = new char[maxcapacity];
+	strcpy_s(temp, maxcapacity, buffer);
+
+	if (maxcapacity < lenght() + str.lenght() + 1){
+		maxcapacity = lenght() + str.lenght() + 1;
 		delete[]buffer;
-		maxcapacity = lent;
 		buffer = new char[maxcapacity];
 	}
-	strcpy_s(buffer, maxcapacity, otherstring);
+	strcpy_s(buffer, maxcapacity, temp);
+	strcpy_s(buffer, maxcapacity, str.buffer);
+	delete[]temp;
 }
 
+void mstring::shrinktofit(){
+	char* tem;
+	tem = new char[lenght() + 1];
+	strcpy_s(tem, lenght() + 1, buffer);
+	maxcapacity = lenght() + 1;
+	delete[]buffer;
+	buffer = new char[maxcapacity];
+	strcpy_s(buffer, maxcapacity, tem);
+}
 
-void mstring::operator +=(const mstring& otherclas){
-	int lent = (strlen(otherclas.buffer) + lenght() + 1);
-	if (maxcapacity < lent){
-		char *temp = nullptr;
-		temp = new char[strlen(buffer) + 1];
-		strcpy_s(temp, strlen(buffer) + 1, buffer);
-		delete[]buffer;
-		lent = strlen(temp) + strlen(otherclas.buffer) + 1;
-		maxcapacity = lent;
-		buffer = new char[lent];
-		strcpy_s(buffer, lent, temp);
-		strcat_s(buffer, lent, otherclas.buffer);
-
+void mstring::getcomand(){
+	char command[30];
+	unsigned int len;
+	printf("¿What are you going to do?");
+	gets_s(command);
+	len = strlen(command) + 1;
+	if (maxcapacity < len){
+		delete[] buffer;
+		maxcapacity = len;
+		buffer = new char[maxcapacity];
 	}
-	else{
-		strcat_s(buffer, strlen(buffer), otherclas.buffer);
-	}
-
-
-}
-
-mstring  mstring::operator+(const mstring &otherclas)
-{
-	mstring newstring;
-	int len = strlen(buffer) + strlen(otherclas.buffer) + 1;
-	maxcapacity = len;
-	newstring.buffer = new char[len];
-	strcpy_s(newstring.buffer, len, buffer);
-	strcat_s(newstring.buffer, len, otherclas.buffer);
-	return newstring;
-}
-
-void  mstring::clear()
-{
-	buffer[0] = '\0';
+	strcpy_s(buffer, maxcapacity, command);
 }
 
 void mstring::set()
@@ -115,7 +145,16 @@ void mstring::set()
 	strcpy_s(buffer, maxcapacity, otherstring);
 }
 
-mstring::~mstring(){
-	delete[] buffer;
+void mstring::tokenize(mstring* Fcomand, mstring* Scomand, mstring* Tcomand, mstring* Focomand)const{
+	mstring buffercpy;
+	mstring othercpy;
+	unsigned int len = lenght() + 1;
+	char* phrase;
+	buffercpy = new char[maxcapacity];
+	buffercpy = buffer;
+
 	
+
+
 }
+

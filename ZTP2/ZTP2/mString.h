@@ -1,9 +1,7 @@
 #ifndef _mSTRING_
 #define _mSTRING_
-#define CRT_SECURE_NO_WARNINGS
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
+
+
 class mstring{
 private:
 	char *buffer = nullptr;
@@ -13,19 +11,25 @@ public:
 	mstring();
 	mstring(const char* STR);
 	mstring(const mstring& otherclas);
-	unsigned int lenght();
+	~mstring();
+
+	unsigned int c_capactity() const;
+	const char* c_str() const;
+	unsigned int lenght() const;
 	bool empty() const;
+	mstring operator+(const mstring& str);
 	bool operator ==(const mstring& otherclas) const;
 	bool operator ==(const char* otherstring) const;
 	bool operator !=(const char* otherstring) const;
 	void operator =(const mstring& otherclas);
 	void operator =(const char* otherstring);
 	void operator +=(const mstring& otherclas);
-	mstring operator+(const mstring &otherclas);
 	bool SameLenght(const mstring& str);
 	bool IsSmaller(const mstring& str);
-	void clear();
+	void clean();
 	void set();
-	~mstring();
+	void shrinktofit(); 
+	void getcomand();
+	void tokenize(mstring* Fcomand, mstring* Scomand, mstring* Tcomand, mstring* Focomand )const;
 };
 #endif
