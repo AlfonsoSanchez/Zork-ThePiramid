@@ -21,7 +21,7 @@ World::~World(){
 
 }
 void World::createworld(){
-	// use strcpy and first room are 1;
+
 	
 
 	

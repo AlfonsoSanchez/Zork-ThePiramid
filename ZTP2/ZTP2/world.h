@@ -25,8 +25,7 @@ public:
 
 
 	void createworld();
-	bool input();
-	void createitem();
+	
 	
 };
 

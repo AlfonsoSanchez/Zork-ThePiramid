@@ -15,6 +15,11 @@ public:
 
 	Player();
 	~Player();
+public:
+	void look();
+	void take();
+	void move();
+	void input();
 };
 
 
