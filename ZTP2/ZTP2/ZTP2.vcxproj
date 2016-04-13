@@ -77,6 +77,7 @@
     <ClInclude Include="exit.h" />
     <ClInclude Include="item.h" />
     <ClInclude Include="mString.h" />
+    <ClInclude Include="mVector.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="rooms.h" />
     <ClInclude Include="world.h" />
