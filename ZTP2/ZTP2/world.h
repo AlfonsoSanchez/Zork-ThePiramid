@@ -7,6 +7,7 @@
 #include"mString.h"
 #include"player.h"
 #include"rooms.h"
+#include "mVector.h"
 
 #define NUM_ROOMS 12;
 #define NUM_EXITS 28;
@@ -17,11 +18,11 @@ class World{
 public:
 	World();
 	~World();
-
-	Room* room;
-	Exit* exits;
 	Player* player;
-	Item * item;
+	Vector <Room*> room;
+	Vector <Exit*> exit;
+	Vector <Item*> item;
+
 
 	void createworld();
 	bool input();

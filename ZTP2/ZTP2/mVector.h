@@ -71,6 +71,9 @@ public:
 	unsigned int c_capacity(){
 		return max_capacity;
 	}
+	TYPE operator[](const int tip){
+		return buffer[tip];
+	}
 }
 
 

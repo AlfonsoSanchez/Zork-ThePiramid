@@ -1,8 +1,12 @@
 #ifndef _Player_
 #define _Player
-class Room;
-class Exit;
+#include "rooms.h"
 
+enum Rooms{
+	ENTRANCE, STRANGLETUNNEL, STRANGLEROOM, SECRETROOM, MAINHALLINI,
+	MAINHALLHALF, MAINHALLEND, DICHARGEROOM, STRANGLETUNNEL2, VENTILATIONROOM,
+	QUEENROOM, KINGROOM
+};
 
 class Player{
 public:
