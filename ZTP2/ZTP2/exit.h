@@ -1,6 +1,7 @@
 #ifndef _Exits_
 #define _Exits_
-
+#include "Entity.h"
+#include "rooms.h"
 enum direction{
 	Dnorth,
 	Dsouth,
@@ -10,20 +11,18 @@ enum direction{
 	Dup,
 };
 
-class Room;
-class Player;
 
-class Exit{
+
+class Exit : public Entity{
 public:
-	char name[50];
-	char description[300];
-
 	Room *Origin;
 	Room *Destination;
 
 	bool opendoor;
 	direction dir;
-
+public:
+	Exit();
+	~Exit();
 
 };
 
