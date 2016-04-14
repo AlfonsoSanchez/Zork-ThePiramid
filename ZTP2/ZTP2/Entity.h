@@ -13,5 +13,5 @@ public:
 	~Entity();
 
 
-}
+};
 #endif
