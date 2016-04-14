@@ -1,5 +1,5 @@
-#ifndef _MVECTOR_
-#define _MVECTOR_
+#ifndef _mVECTOR_
+#define _mVECTOR_
 
 template <class TYPE>
 
@@ -74,7 +74,7 @@ public:
 	TYPE operator[](const int tip){
 		return buffer[tip];
 	}
-}
+};
 
 
 
