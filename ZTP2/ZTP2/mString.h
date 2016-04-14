@@ -30,6 +30,6 @@ public:
 	void set();
 	void shrinktofit(); 
 	void getcomand();
-	void tokenize(mstring* Fcomand, mstring* Scomand, mstring* Tcomand, mstring* Focomand )const;
+	void tokenize(mstring& Fcomand, mstring& Scomand, mstring& Tcomand )const;
 };
 #endif

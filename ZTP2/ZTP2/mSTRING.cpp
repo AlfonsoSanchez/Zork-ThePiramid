@@ -145,16 +145,29 @@ void mstring::set()
 	strcpy_s(buffer, maxcapacity, otherstring);
 }
 
-void mstring::tokenize(mstring* Fcomand, mstring* Scomand, mstring* Tcomand, mstring* Focomand)const{
-	mstring buffercpy;
-	mstring othercpy;
+
+void mstring::tokenize(mstring & Fcommand, mstring & Scommand, mstring & Tcommand) const{
 	unsigned int len = lenght() + 1;
-	char* phrase;
-	buffercpy = new char[maxcapacity];
-	buffercpy = buffer;
-
+	char* var;
+	Fcommand = strtok_s(buffer, " ,.-", &var);
+	if (*var != NULL){
+		Scommand = strtok_s(NULL, "", &var);
+		if (*var != NULL){
+			Tcommand = strtok_s(NULL, "", &var);
+			
+		}
+		else {
+			Tcommand.clean();
+			
+		}
+	}
+	else{
+		Scommand.clean();
+		Tcommand.clean();
+		
+	}
+	Fcommand.shrinktofit();//Adapt memory to order.
+	Scommand.shrinktofit();
+	Tcommand.shrinktofit();
 	
-
-
 }
-
