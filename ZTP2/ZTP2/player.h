@@ -23,6 +23,9 @@ public:
 	~Player();
 public:
 	int Order(const mstring&, const mstring&, const mstring&);
+	int num_order(const mstring&, const mstring&, const mstring&);
+	
+
 };
 
 

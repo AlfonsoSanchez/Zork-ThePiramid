@@ -42,7 +42,7 @@ bool mstring::empty() const{
 	
 }
 
-unsigned int mstring::c_capactity()const{
+unsigned int mstring::c_capacity()const{
 	return maxcapacity;
 }
 void  mstring::clean()

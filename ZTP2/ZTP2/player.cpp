@@ -1,5 +1,5 @@
 #include "player.h"
-
+#include "world.h"
 
 Player::Player(){
 
@@ -11,7 +11,7 @@ Player::~Player(){
 
 
 }
-int Order(const mstring& Fcommand, const mstring& Scommand, const mstring&Tcommand){
+int Player::Order(const mstring& Fcommand, const mstring& Scommand, const mstring&Tcommand){
 	// all possibilities first command in the string
 
 	if ((Fcommand == "north") || (Fcommand == "NORTH") || (Fcommand == "n")){
@@ -110,4 +110,23 @@ int Order(const mstring& Fcommand, const mstring& Scommand, const mstring&Tcomma
 	if ((Tcommand == "get") || (Scommand == "from")){
 		return FROM;
 	}
+	
 }
+int Player::num_order(const mstring& Fcommand, const mstring& Scommand, const mstring& Tcommand){
+	int number = 0;
+	// != 0 bechause the minium are 1 and are n w e s
+	if (Fcommand.c_capacity() != 0){
+		number++;
+		if (Scommand.c_capacity() != 0){
+			number++;
+			if (Tcommand.c_capacity() != 0){
+				number++;
+
+			}
+		}
+	}
+	return number;
+
+}
+
+

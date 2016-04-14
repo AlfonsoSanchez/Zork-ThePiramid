@@ -13,7 +13,7 @@ public:
 	mstring(const mstring& otherclas);
 	~mstring();
 
-	unsigned int c_capactity() const;
+	unsigned int c_capacity() const;
 	const char* c_str() const;
 	unsigned int lenght() const;
 	bool empty() const;
