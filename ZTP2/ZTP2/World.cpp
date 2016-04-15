@@ -4,7 +4,7 @@
 #include <stdlib.h>
 World::World(){
 	createworld();
-	string = new mstring();
+	
 }
 
 World::~World(){
@@ -13,33 +13,34 @@ World::~World(){
 
 void World::createworld()
 {
-	Room* Entrance;
-	Room* StrangleTunnel;
-	Room* StrangleRoom;
-	Room* SecretRoom;
-	Room* MHI;
-	Room* MHM;
-	Room* MHE;
-	Room* DichargeRoom;
-	Room* StrangleTunnel2;
-	Room* VentilationRoom;
-	Room* QueenRoom;
-	Room* KingRoom;
+	Room* Entrance = new Room("Entrance", "You are at the entrance, the exit has been blocked by stones");
+	Room* StrangleTunnel = new Room("Strangle Tunnel", "You are in a narrow tunnel that seems to have no end");
+	Room* StrangleRoom = new Room("Strangle Room", "It seems a false room, created to lose intruders, a door is at the end of the room");
+	Room* SecretRoom = new Room("Secret Room", "You just found a secret room, there must be something hidden");
+	Room* MHI = new Room("Main Hall Initation", "you are at the beginning of the large main hall ,where to find some stairs down , no more ways");
+	Room* MHM = new Room("Main Hall Half", "you are at the middle of the large main hall, find two paths, one to go straight and another full of boxes but is illuminated");
+	Room* MHE = new Room("Main Hall End", "you are at the end of main hall, you found two ways: a small cloed room or a gilded hall where a sinister noise is heard");
+	Room* DichargeRoom = new Room("Dicharge Room", "The road full of boxes has taken you to a room full of rotten food and broken vessel at the end of the room you find a strange hall");
+	Room* StrangleTunnel2 = new Room("Strangle Tunnel", "We find a very wide tunnel with natural light emanating from the end of the hall , you can see the strange paintings which tell the story of a strange magical scepter , against more advance more you smell the fresh air ");
+	Room* VentilationRoom = new Room("Ventilation Room", "You watched the light and fresh air were coming from this room full of small ventilation holes barely enters a finger into a hole seems to be no way out.");
+	Room* QueenRoom = new Room("Queen Room", "You 've just discovered the room of the queen, the coffin is opened inside the mummy of Queen armless seems that someone has removed an object that had caught on the walls you will find texts about the curse of the scepter.");
+	Room* KingRoom = new Room("King Room", "You are in the room faraon not you believe it is a door where output is around you and thousands of treasures");
 
 	player.pushback(new Player);
+	player[0]->playerposition = Entrance;
 
-	room.pushback(Entrance = new Room("Entrance", "You are at the entrance, the exit has been blocked by stones"));
-	room.pushback(StrangleTunnel = new Room("Strangle Tunnel", "You are in a narrow tunnel that seems to have no end"));
-	room.pushback(StrangleRoom = new Room("Strangle Room", "It seems a false room, created to lose intruders, a door is at the end of the room"));
-	room.pushback(SecretRoom = new Room("Secret Room", "You just found a secret room, there must be something hidden"));
-	room.pushback(MHI = new Room("Main Hall Initation", "you are at the beginning of the large main hall ,where to find some stairs down , no more ways"));
-	room.pushback(MHM = new Room("Main Hall Half", "you are at the middle of the large main hall, find two paths, one to go straight and another full of boxes but is illuminated"));
-	room.pushback(MHE = new Room("Main Hall End", "you are at the end of main hall, you found two ways: a small cloed room or a gilded hall where a sinister noise is heard"));
-	room.pushback(DichargeRoom = new Room("Dicharge Room", "The road full of boxes has taken you to a room full of rotten food and broken vessel at the end of the room you find a strange hall"));
-	room.pushback(StrangleTunnel2 = new Room("Strangle Tunnel", "We find a very wide tunnel with natural light emanating from the end of the hall , you can see the strange paintings which tell the story of a strange magical scepter , against more advance more you smell the fresh air "));
-	room.pushback(VentilationRoom = new Room("Ventilation Room", "You watched the light and fresh air were coming from this room full of small ventilation holes barely enters a finger into a hole seems to be no way out."));
-	room.pushback(QueenRoom = new Room("Queen Room", "You 've just discovered the room of the queen, the coffin is opened inside the mummy of Queen armless seems that someone has removed an object that had caught on the walls you will find texts about the curse of the scepter."));
-	room.pushback(KingRoom = new Room("King Room", "You are in the room faraon not you believe it is a door where output is around you and thousands of treasures"));
+	room.pushback(Entrance);
+	room.pushback(StrangleTunnel);
+	room.pushback(StrangleRoom);
+	room.pushback(SecretRoom);
+	room.pushback(MHI);
+	room.pushback(MHM);
+	room.pushback(MHE);
+	room.pushback(DichargeRoom);
+	room.pushback(StrangleTunnel2);
+	room.pushback(VentilationRoom);
+	room.pushback(QueenRoom);
+	room.pushback(KingRoom);
 
 
 
@@ -74,19 +75,32 @@ void World::createworld()
 
 	
 }
-void World::Input(){
+bool World::Input(){
+	char* input = nullptr;
 	input = new char[30];
 	gets_s(input, 30);
-}
-bool World::CheckInput(){
-	mstring order;
+
+
+	mstring order(input);
+	Vector <mstring*> playeraction;
+	
+	order.tokenize(playeraction);
 	printf("What do you do? :");
-	Input();
-	order = input;
+
+	
 
 	if (order == "go north" || order == "north" || order == "n")
 	{
-
+		for (int i = 0; i < 28; i++){
+			if (exit[i]->origin == player[0]->playerposition){
+				if (exit[i]->direction == north){
+					if (exit[i]->opendoor == true){
+						player[0]->playerposition = exit[i]->destination;
+					}
+				}
+				
+			}
+		}
 		return false;
 	}
 	else if (order == "go south" || order == "south" || order == "s")
