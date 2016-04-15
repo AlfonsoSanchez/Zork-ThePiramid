@@ -5,8 +5,8 @@
 class Player{
 public:
 	Room* playerposition;
-	Player();
-};
+	Player()
+}
 
 
 
