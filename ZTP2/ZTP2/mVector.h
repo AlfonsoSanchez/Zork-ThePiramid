@@ -2,7 +2,6 @@
 #define _mVECTOR_
 
 template <class TYPE>
-
 class Vector
 {
 private:
@@ -25,6 +24,10 @@ public:
 			buffer[i] = v.buffer[i];
 		}
 	}
+	Vector(unsigned int size): max_capacity(size){
+		
+		buffer = new TYPE[max_capacity];
+	}
 
 	~Vector(){
 		delete[] buffer;
@@ -41,7 +44,7 @@ public:
 			delete[]buffer;
 			buffer = tem;
 		}
-		*(buffer + num_elements++) = n;
+		*(buffer + elements++) = n;
 	}
 
 	void pushfront(const TYPE &n){
@@ -57,8 +60,18 @@ public:
 		delete[]buffer;
 		buffer = tem;
 		*buffer = num;
-		elemetns++;
+		elements++;
 	}
+	bool pop_back(TYPE& value){
+		
+		if (elements >0){
+
+			elements--;
+			value = buffer[elements];
+			return true;
+	}
+		return false;
+		}
 	bool empty(){
 		return (elements == 0);
 	}
@@ -71,7 +84,12 @@ public:
 	unsigned int c_capacity(){
 		return max_capacity;
 	}
-	TYPE operator[](const int tip){
+	TYPE operator[](unsigned int tip){  //uint no const because its a copy see copy constructor.
+		assert(tip < elements);
+		return buffer[tip];
+	}
+	TYPE& operator[](unsigned int tip){  //uint no const because its a copy see copy constructor. ACABAR
+		assert(tip < elements);
 		return buffer[tip];
 	}
 };
