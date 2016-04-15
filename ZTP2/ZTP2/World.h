@@ -21,11 +21,16 @@ public:
 	Vector <Room*> room;
 	Vector <Exit*> exit;
 	mstring* string;
+	char* input = nullptr;
 
 	void createworld();
+	void Input();
+	bool CheckInput();
+	void CheckNorth();
+	void CheckSouth();
+	void CheckWest();
+	void CheckEast();
 	
-	void go(const mstring*, Vector <Exit*>&, Player*, const dir) const;
-	void look(const char*, const Exit*, Player*, const dir) const;
 public:
 	World();
 	World();

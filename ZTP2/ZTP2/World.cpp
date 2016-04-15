@@ -1,5 +1,7 @@
 #include "World.h"
 #include "mVector.h"
+#include <stdio.h>
+#include <stdlib.h>
 World::World(){
 	createworld();
 	string = new mstring();
@@ -69,5 +71,107 @@ void World::createworld()
 	exit.pushback(new Exit("Strangle Tunnel", "We find a very wide tunnel with natural light emanating from the end of the hall , you can see the strange paintings which tell the story of a strange magical scepter , against more advance more you smell the fresh air ", north, true, KingRoom, StrangleTunnel2));
 	exit.pushback(new Exit("Queen Room", "You 've just discovered the room of the queen, the coffin is opened inside the mummy of Queen armless seems that someone has removed an object that had caught on the walls you will find texts about the curse of the scepter.", west, true, KingRoom, QueenRoom));
 	exit.pushback(new Exit("King Room", "You are in the room faraon not you believe it is a door where output is around you and thousands of treasures", east, true, QueenRoom, KingRoom));
+
+	
+}
+void World::Input(){
+	input = new char[30];
+	gets_s(input, 30);
+}
+bool World::CheckInput(){
+	mstring order;
+	printf("What do you do? :");
+	Input();
+	order = input;
+
+	if (order == "go north" || order == "north" || order == "n")
+	{
+
+		return false;
+	}
+	else if (order == "go south" || order == "south" || order == "s")
+	{
+
+		return false;
+	}
+	else if (order == "go east" || order == "east" || order == "e")
+	{
+
+		return false;
+	}
+	else if (order == "go west" || order == "west" || order == "w")
+	{
+
+		return false;
+	}
+	else if (order == "go up" || order == "up" || order == "u")
+	{
+
+		return false;
+	}
+	else if (order == "go down" || order == "down" || order == "d")
+	{
+
+		return false;
+	}
+	else if (order == "look")
+	{
+
+		return false;
+	}
+	else if (order == "look north")
+	{
+
+		return false;
+	}
+	else if (order == "look south")
+	{
+
+		return false;
+	}
+	else if (order == "look east")
+	{
+
+		return false;
+	}
+	else if (order == "look west")
+	{
+
+		return false;
+	}
+	else if (order == "look up")
+	{
+
+		return false;
+	}
+	else if (order == "look down")
+	{
+
+		return false;
+	}
+	else if (order == "open")
+	{
+
+		return false;
+	}
+	else if (order == "close")
+	{
+
+		return false;
+	}
+	else if (order == "help" ||order =="h")
+	{
+
+		return false;
+	}
+	else if (order == "quit" || order == "q")
+	{
+
+		return true;
+	}
+	else {
+		printf("\n Wrong command\n");
+		return false;
+	}
 
 }
