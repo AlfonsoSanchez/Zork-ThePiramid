@@ -5,8 +5,11 @@
 class Player{
 public:
 	Room* playerposition;
-	Player()
-}
+public:
+
+	Player();
+	~Player();
+};
 
 
 

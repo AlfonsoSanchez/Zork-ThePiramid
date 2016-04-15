@@ -7,6 +7,8 @@ enum dir{
 	south,
 	east,
 	west,
+	up,
+	down,
 };
 
 class Exit : public Entity{
@@ -17,7 +19,7 @@ public:
 	dir direction;
 public:
 	Exit(const char*, const char*, dir, bool, Room*, Room*);
-
+	~Exit();
 
 };
 

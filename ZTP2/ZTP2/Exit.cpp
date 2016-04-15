@@ -5,3 +5,8 @@ Exit::Exit(const char*nam, const char*desc, dir direct, bool opdoor, Room* origi
 
 
 }
+
+Exit::~Exit(){
+
+
+}
