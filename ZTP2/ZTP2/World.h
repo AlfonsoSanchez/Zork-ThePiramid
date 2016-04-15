@@ -20,20 +20,14 @@ public:
 	Vector <Player*> player;
 	Vector <Room*> room;
 	Vector <Exit*> exit;
-	mstring* string;
-	char* input = nullptr;
+	
+	
 
 	void createworld();
-	void Input();
-	bool CheckInput();
-	void CheckNorth();
-	void CheckSouth();
-	void CheckWest();
-	void CheckEast();
+	bool Input();
 	
-public:
-	World();
-	World();
+	
+
 	
 
 

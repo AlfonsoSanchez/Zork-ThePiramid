@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include "mVector.h"
 
 //tokenize X. rest V
 const char* mstring::Str() const{
@@ -146,28 +147,16 @@ void mstring::set()
 }
 
 
-void mstring::tokenize(mstring & Fcommand, mstring & Scommand, mstring & Tcommand) const{
-	unsigned int len = lenght() + 1;
-	char* var;
-	Fcommand = strtok_s(buffer, " ,.-", &var);
-	if (*var != NULL){
-		Scommand = strtok_s(NULL, "", &var);
-		if (*var != NULL){
-			Tcommand = strtok_s(NULL, "", &var);
-
-		}
-		else {
-			Tcommand.clean();
-
-		}
+void mstring::tokenize(Vector <mstring*> &command) const{
+	
+	char* var= nullptr;
+	command.pushback(new mstring(strtok_s(buffer, " ,.-", &var)));
+	while (var != "" ){
+		command.pushback(new mstring(strtok_s(NULL, " ,.-", &var)));
 	}
-	else{
-		Scommand.clean();
-		Tcommand.clean();
 
-	}
-	Fcommand.shrinktofit();//Adapt memory to order.
-	Scommand.shrinktofit();
-	Tcommand.shrinktofit();
+	
+	
+	
 
 }

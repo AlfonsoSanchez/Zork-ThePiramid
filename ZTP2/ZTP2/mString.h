@@ -1,6 +1,6 @@
 #ifndef _mSTRING_
 #define _mSTRING_
-
+#include "mVector.h"
 
 class mstring{
 private:
@@ -30,7 +30,7 @@ public:
 	void set();
 	void shrinktofit();
 	void getcomand();
-	void tokenize(mstring& Fcomand, mstring& Scomand, mstring& Tcomand)const;
+	void tokenize(Vector<mstring*> &command)const;
 };
 
 #endif

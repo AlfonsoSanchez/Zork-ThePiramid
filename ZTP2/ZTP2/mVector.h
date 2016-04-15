@@ -1,5 +1,6 @@
 #ifndef _mVECTOR_
 #define _mVECTOR_
+#include <assert.h>
 
 template <class TYPE>
 class Vector
@@ -84,7 +85,7 @@ public:
 	unsigned int c_capacity(){
 		return max_capacity;
 	}
-	TYPE operator[](unsigned int tip){  //uint no const because its a copy see copy constructor.
+	TYPE operator[](unsigned int tip) const{  //uint no const because its a copy see copy constructor.
 		assert(tip < elements);
 		return buffer[tip];
 	}
