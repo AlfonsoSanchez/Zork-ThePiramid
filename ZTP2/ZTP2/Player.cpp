@@ -5,6 +5,8 @@
 #include "item.h"
 #include "mString.h"
 #include <stdio.h>
+#include "Exit.h"
+#include "Room.h"
 
 Player::Player(const char* nam, const char* descrip, Room* room) : Entity(nam, descrip), Playerposition(room)
 {

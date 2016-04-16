@@ -11,7 +11,7 @@ public:
 	Item(const char* name, const char* description, Entity* items);
 	~Item();
 
-}
+};
 
 
 

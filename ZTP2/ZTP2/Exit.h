@@ -2,7 +2,9 @@
 #ifndef _EXIT_
 #define _EXIT_
 #include "Entity.h"
-#include "Room.h"
+
+
+class Room;
 enum dir{
 	north,
 	south,

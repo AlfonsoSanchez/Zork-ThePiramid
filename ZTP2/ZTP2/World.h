@@ -1,12 +1,17 @@
 #ifndef _WORLD_
 #define _WORLD_
 
-#include "Entity.h"
+
 #include "mVector.h"
 #include "mString.h"
-#include "Player.h"
-#include "Exit.h"
-#include "item.h"
+
+
+class Item;
+class Room;
+class Exit;
+
+class Player;
+
 
 
 

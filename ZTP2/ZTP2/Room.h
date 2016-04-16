@@ -6,7 +6,7 @@ class Room : public Entity
 {
 
 public:
-	Room(const char*, const char*);
+	Room(const char*, const char*); 
 	~Room();
 };
 

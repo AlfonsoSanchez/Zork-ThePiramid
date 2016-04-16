@@ -2,8 +2,8 @@
 #define _PLAYER_
 
 #include "Entity.h"
-
 #include "Exit.h"
+
 class Room;
 class World;
 
