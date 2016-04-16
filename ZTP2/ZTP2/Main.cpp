@@ -5,6 +5,7 @@
 #include "Exit.h"
 #include "Player.h"
 #include "Entity.h"
+#include "item.h"
 
 int main()
 {
@@ -12,7 +13,7 @@ int main()
 	World* world = new World;
 	world->CreateWorld();
 	
-
+	world->player[0]->look();
 	do
 	{
 		play = world->Input();

@@ -7,6 +7,7 @@ class Entity{
 public:
 	mstring name;
 	mstring description;
+	Vector <Entity*> entities;
 
 public:
 	Entity(const char*,const char*);

@@ -2,18 +2,18 @@
 #define _PLAYER_
 
 #include "Entity.h"
-#include "Room.h"
-#include "Exit.h"
 
+#include "Exit.h"
+class Room;
 class World;
 
-class Player
+class Player :public Entity
 {
 
 public:
 	Room* Playerposition;
 
-	Player(Room* room);
+	Player(const char* name,const char* decription,Room* room);
 	~Player();
 
 public:
@@ -22,7 +22,9 @@ public:
 	void move(const World* world, dir direction);
 	void opendoor(World* world, dir direction);
 	void closedoor(World* world, dir direction);
-	
+	void Inventory() const;
+	void PickItem(mstring item);
+	void DropItem(mstring item);
 
 };
 

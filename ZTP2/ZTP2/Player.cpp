@@ -1,7 +1,12 @@
 #include "Player.h"
 #include "World.h"
+#include "Entity.h"
+#include "mVector.h"
+#include "item.h"
+#include "mString.h"
+#include <stdio.h>
 
-Player::Player(Room* room) : Playerposition(room)
+Player::Player(const char* nam, const char* descrip, Room* room) : Entity(nam, descrip), Playerposition(room)
 {
 
 }
@@ -129,5 +134,52 @@ void Player::move(const World* world, dir direct)
 	if (test == true)
 	{
 		printf("Nothing to see there.\n");
+	}
+
+	
+}
+void Player::Inventory()const{
+	if (entities.size() == 0){
+		printf("You inventory are NULL \n");
+	}
+	for (unsigned int i = 0; entities.size() > i; i++){
+		printf("%s\n", this->entities[i]->Getname());
+	}
+}
+
+void Player::PickItem(mstring item){
+	if (entities.size() < 3){
+		for (unsigned int i = 0; Playerposition->entities.size() > i; i++)
+		{
+			if (item == Playerposition->entities[i]->Getname()){
+				entities.pushback(Playerposition->entities[i]);
+				printf(" You just take a %s", Playerposition->entities[i]->Getname());
+				Playerposition->entities.RemoveItem(i);
+				return;
+
+			}
+
+		}
+		printf("there is nothing\n");
+	}
+
+	printf("your inventory is full\n");
+}
+
+void Player::DropItem(mstring item){
+
+	if (entities.size() > 0){
+		for (unsigned int i = 0; entities.size() > i; i++){
+			if (item == entities[i]->Getname()){
+				Playerposition->entities.pushback(entities[i]);
+				printf("You droped the %s", entities[i]->Getname());
+				entities.RemoveItem(i);
+				return;
+			}
+		}
+		printf("you dont have item");
+	}
+	else{
+		printf("you dont have item");
 	}
 }

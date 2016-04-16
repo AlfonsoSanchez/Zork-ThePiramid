@@ -125,6 +125,7 @@ public:
 		assert(index < num_elements);
 		return buffer[index];
 	}
+	
 
 	void clean()
 	{
@@ -136,6 +137,14 @@ public:
 		return num_elements;
 	}
 
-};
+	void RemoveItem(unsigned int index)
+	{
+		for (unsigned int i = index; i < num_elements; i++){
+			buffer[i] = buffer[i + 1];
+		}
+		num_elements--;
+		
+		}
+}; 
 
 #endif

@@ -3,7 +3,10 @@
 #include <stdlib.h>
 #include "World.h"
 #include "mVector.h"
-
+#include "item.h"
+#include "Room.h"
+#include "Player.h"
+#include "Exit.h"
 
 World::World()
 {
@@ -47,6 +50,24 @@ void World::CreateWorld()
 	room.pushback(KingRoom);
 
 
+	Item* Key = new Item("key", "can use for open 1 door", room[1]);
+	Item* Sword = new Item("Sword" ,"+50damage ", room[5]);
+	Item* Potion = new Item("health potion", "restore 50% life", room[3]);
+	Item* Book = new Item("Book" ,"+5 damage ", room[2]);
+	Item* Stone = new Item("Stone", "kill 1 hit ", room[6]);
+
+	items.pushback(Key);
+	items.pushback(Sword);
+	items.pushback(Potion);
+	items.pushback(Book);
+	items.pushback(Stone);
+
+	room[1]->entities.pushback(items[0]);
+	room[2]->entities.pushback(items[1]);
+	room[3]->entities.pushback(items[2]);
+	room[5]->entities.pushback(items[3]);
+	room[6]->entities.pushback(items[4]);
+	
 
 	exit.pushback(new Exit("Strangle Tunnel", "You are in a narrow tunnel that seems to have no end", east, true, Entrance, StrangleTunnel));
 	exit.pushback(new Exit("Entrance", "You are at the entrance, the exit has been blocked by stones", west, true, StrangleTunnel, Entrance));
@@ -76,7 +97,7 @@ void World::CreateWorld()
 	exit.pushback(new Exit("Strangle Tunnel", "We find a very wide tunnel with natural light emanating from the end of the hall , you can see the strange paintings which tell the story of a strange magical scepter , against more advance more you smell the fresh air ", north, true, KingRoom, StrangleTunnel2));
 	exit.pushback(new Exit("Queen Room", "You 've just discovered the room of the queen, the coffin is opened inside the mummy of Queen armless seems that someone has removed an object that had caught on the walls you will find texts about the curse of the scepter.", west, true, KingRoom, QueenRoom));
 	exit.pushback(new Exit("King Room", "You are in the room faraon not you believe it is a door where output is around you and thousands of treasures", east, true, QueenRoom, KingRoom));
-	player.pushback(new Player(room[0]));
+	player.pushback(new Player("Sito", "THE BEST", room[0]));
 
 }
 bool World::Input()
