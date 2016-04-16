@@ -88,6 +88,7 @@ void Player::closedoor(World* world, dir direct)
 				else
 				{
 					printf("The door is already closed.");
+					test = false;
 					break;
 				}
 			}
@@ -101,7 +102,7 @@ void Player::closedoor(World* world, dir direct)
 void Player::move(const World* world, dir direct)
 {
 	bool test = true;
-	for (int i = 0; i < 29; i++)
+	for (int i = 0; i < 28; i++)
 	{
 		if (world->exit[i]->Origin == Playerposition)
 		{
@@ -118,6 +119,7 @@ void Player::move(const World* world, dir direct)
 				else
 				{
 					printf("The door is closed.");
+					test = false;
 					break;
 				}
 			}

@@ -83,8 +83,8 @@ bool World::Input()
 {
 	bool repeat = true;
 	char input[50];
-	char part1[25];  ///////// adri
-	char part2[25];  ///////// adri
+	char part1[25];  
+	char part2[25];  
 	char* context;
 
 	do
@@ -101,15 +101,15 @@ bool World::Input()
 		Vector < mstring* > PlayerAction;
 		action.tokenize(PlayerAction);
 
-		// HELP /////////////////////////////////////////
+	
 
 		if (action == "h" || action == "help")
 		{
-			printf("\n-----HELP-----\nYOU CAN MOVE BY PRESSING:\nn/s/e/w\nnorth/south/east/west\ngo + north/south/east/west\n\nYOU CAN LOOK BY PRESSING:\nl\nlook\nl + room/north/south/east/west\nl + oom/north/south/east/west\nlook + room/north/south/east/west\n\nYOU CAN OPEN OR CLOSE DOORS BY PRESSING:\no/c + n/s/e/w\nopen/close + north/south/east/west\n\nYOU CAN QUIT THE GAME BY PRESSING:\nq/quit\n\n");
+			printf("YOU CAN MOVE BY PRESSING:\nn/s/e/w\nnorth/south/east/west\ngo + north/south/east/west\n\nYOU CAN LOOK BY PRESSING:\nl\nlook\nl + room/north/south/east/west\nl + oom/north/south/east/west\nlook + room/north/south/east/west\n\nYOU CAN OPEN OR CLOSE DOORS BY PRESSING:\no/c + n/s/e/w\nopen/close + north/south/east/west\n\nYOU CAN QUIT THE GAME BY PRESSING:\nq/quit\n\n");
 			return true;
 		}
 
-		// LOOK ACTION //////////////////////////////////
+		
 
 		else if (PlayerAction[0]->allstring() == "look" || PlayerAction[0]->allstring() == "l")
 		{
@@ -153,7 +153,7 @@ bool World::Input()
 
 		}
 
-		// GO ACTION ////////////////////////////////////
+		
 
 		else if (PlayerAction[0]->allstring() == "n" || PlayerAction[0]->allstring() == "north")
 		{
@@ -317,19 +317,18 @@ bool World::Input()
 			}
 		}
 
-		// QUIT ACTION /////////////////////////////////
-
+		
 		else if (action == "q" || action == "quit")
 		{
-			printf("\nThanks for playing! c u soon!\n");
+			printf("\nThanks for playing!\n");
 			return false;
 		}
 
-		// WRONG INPUT /////////////////////////////////
+		
 
 		else
 		{
-			printf("Wrong input, type h for HELP.\n");
+			printf("Wrong input, if u need help -> h.\n");
 			return true;
 		}
 	} while (repeat == true);
