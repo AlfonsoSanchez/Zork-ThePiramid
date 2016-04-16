@@ -4,7 +4,8 @@
 #include <ctype.h>
 #include "mVector.h"
 
-//tokenize X. rest V
+#define _CTR_SECURE_NO_WARNINGS
+
 const char* mstring::Str() const{
 	return buffer;
 }
@@ -30,7 +31,7 @@ mstring::~mstring(){
 
 }
 
-const char*mstring::c_str()const{
+ char*mstring::c_str()const{
 	return buffer;
 
 }
@@ -151,7 +152,7 @@ void mstring::tokenize(Vector <mstring*> &command) const{
 	
 	char* var= nullptr;
 	command.pushback(new mstring(strtok_s(buffer, " ,.-", &var)));
-	while (var != "" ){
+	while (strcmp(var,"")!= 0){
 		command.pushback(new mstring(strtok_s(NULL, " ,.-", &var)));
 	}
 

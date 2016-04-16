@@ -14,7 +14,7 @@ public:
 	~mstring();
 
 	unsigned int c_capacity() const;
-	const char* c_str() const;
+	 char* c_str() const;
 	unsigned int lenght() const;
 	bool empty() const;
 	mstring operator+(const mstring& str);

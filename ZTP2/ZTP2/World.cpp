@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 World::World(){
-	createworld();
+	
 	
 }
 
@@ -26,8 +26,8 @@ void World::createworld()
 	Room* QueenRoom = new Room("Queen Room", "You 've just discovered the room of the queen, the coffin is opened inside the mummy of Queen armless seems that someone has removed an object that had caught on the walls you will find texts about the curse of the scepter.");
 	Room* KingRoom = new Room("King Room", "You are in the room faraon not you believe it is a door where output is around you and thousands of treasures");
 
-	player.pushback(new Player);
-	player[0]->playerposition = Entrance;
+	player.pushback(new Player(room[0]));
+	
 
 	room.pushback(Entrance);
 	room.pushback(StrangleTunnel);
@@ -76,116 +76,164 @@ void World::createworld()
 	
 }
 bool World::Input(){
-	char* input = nullptr;
-	input = new char[30];
-	gets_s(input, 30);
-
-
+	char input[50];
+	 
+	
+	bool quiit = false;
 	mstring order(input);
 	Vector <mstring*> playeraction;
-	
+	order.shrinktofit();
 	order.tokenize(playeraction);
-	printf("What do you do? :");
 
 	
+	printf("What do you do? :");
+	gets_s(input);
+	
+	do{
 
-	if (order == "go north" || order == "north" || order == "n")
-	{
-		for (int i = 0; i < 28; i++){
-			if (exit[i]->origin == player[0]->playerposition){
-				if (exit[i]->direction == north){
-					if (exit[i]->opendoor == true){
-						player[0]->playerposition = exit[i]->destination;
+		if (order == "go north" || order == "north" || order == "n")
+		{
+			for (int i = 0; i < 28; i++){
+				if (exit[i]->origin == player[0]->playerposition){
+					if (exit[i]->direction == north){
+						if (exit[i]->opendoor == true){
+							
+							printf("%s \n", exit[i]->GetName());
+							printf("%s \n", exit[i]->GetDescription());
+							player[0]->playerposition = exit[i]->destination;
+						}
+						else (printf("\nThe door are close\n"));
 					}
+					else(printf("\n Wall you can't continue\n"));
+
 				}
-				
 			}
+			return false;
 		}
-		return false;
-	}
-	else if (order == "go south" || order == "south" || order == "s")
-	{
+		else if (order == "go south" || order == "south" || order == "s")
+		{
+			for (int i = 0; i < 28; i++){
+				if (exit[i]->origin == player[0]->playerposition){
+					if (exit[i]->direction == south){
+						if (exit[i]->opendoor == true){
+							
+							printf("%s \n", exit[i]->GetName());
+							printf("%s \n", exit[i]->GetDescription());
+							player[0]->playerposition = exit[i]->destination;
+						}
+						else (printf("\nThe door are close\n"));
+					}
+					else(printf("\n Wall you can't continue\n"));
 
-		return false;
-	}
-	else if (order == "go east" || order == "east" || order == "e")
-	{
+				}
+			}
+			return false;
+		}
+		else if (order == "go east" || order == "east" || order == "e")
+		{
+			for (int i = 0; i < 28; i++){
+				if (exit[i]->origin == player[0]->playerposition){
+					if (exit[i]->direction == north){
+						if (exit[i]->opendoor == east){
+							player[0]->playerposition = exit[i]->destination;
+							printf("%s \n", exit[i]->name);
+							printf("%s \n", exit[i]->description);
+						}
+						else (printf("\nThe door are close\n"));
+					}
+					else(printf("\n Wall you can't continue\n"));
 
-		return false;
-	}
-	else if (order == "go west" || order == "west" || order == "w")
-	{
+				}
+			}
 
-		return false;
-	}
-	else if (order == "go up" || order == "up" || order == "u")
-	{
+			return false;
+		}
+		else if (order == "go west" || order == "west" || order == "w")
+		{
+			for (int i = 0; i < 28; i++){
+				if (exit[i]->origin == player[0]->playerposition){
+					if (exit[i]->direction == west){
+						if (exit[i]->opendoor == true){
+							player[0]->playerposition = exit[i]->destination;
+							printf("%s \n", exit[i]->name);
+							printf("%s \n", exit[i]->description);
+						}
+						else (printf("\nThe door are close\n"));
+					}
+					else(printf("\n Wall you can't continue\n"));
 
-		return false;
-	}
-	else if (order == "go down" || order == "down" || order == "d")
-	{
+				}
+			}
+			return false;
+		}
+		else if (order == "go up" || order == "up" || order == "u")
+		{
 
-		return false;
-	}
-	else if (order == "look")
-	{
+			return false;
+		}
+		else if (order == "go down" || order == "down" || order == "d")
+		{
 
-		return false;
-	}
-	else if (order == "look north")
-	{
+			return false;
+		}
+		else if (order == "look")
+		{
 
-		return false;
-	}
-	else if (order == "look south")
-	{
+			return false;
+		}
+		else if (order == "look north")
+		{
 
-		return false;
-	}
-	else if (order == "look east")
-	{
+			return false;
+		}
+		else if (order == "look south")
+		{
 
-		return false;
-	}
-	else if (order == "look west")
-	{
+			return false;
+		}
+		else if (order == "look east")
+		{
 
-		return false;
-	}
-	else if (order == "look up")
-	{
+			return false;
+		}
+		else if (order == "look west")
+		{
 
-		return false;
-	}
-	else if (order == "look down")
-	{
+			return false;
+		}
+		else if (order == "look up")
+		{
 
-		return false;
-	}
-	else if (order == "open")
-	{
+			return false;
+		}
+		else if (order == "look down")
+		{
 
-		return false;
-	}
-	else if (order == "close")
-	{
+			return false;
+		}
+		else if (order == "open")
+		{
 
-		return false;
-	}
-	else if (order == "help" ||order =="h")
-	{
+			return false;
+		}
+		else if (order == "close")
+		{
 
-		return false;
-	}
-	else if (order == "quit" || order == "q")
-	{
+			return false;
+		}
+		else if (order == "help" || order == "h")
+		{
 
-		return true;
-	}
-	else {
-		printf("\n Wrong command\n");
-		return false;
-	}
+			return false;
+		}
+		else if (order == "quit" || order == "q")
+		{
 
+			return true;
+		}
+		else {
+			printf("\n Wrong command\n");
+			return false;
+		}
+	}while (quiit == false);
 }
