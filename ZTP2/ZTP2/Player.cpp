@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Entity.h"
 #include <stdio.h>
 Player::Player(Room* room): playerposition(room){
 
@@ -16,7 +17,7 @@ void Player::Look() const {
 
 	printf("%s \n %s", playerposition->GetName(), playerposition->GetDescription);
 }
-void Player::LookExit(const World* world, const dir direction) const{
+void Player::LookExit( World* world, const dir direction) const{
 	for (int i = 0; i < 28; i++){
 		if (world->exit[i]->origin == playerposition){
 			if (world->exit[i]->direction == direction){
@@ -29,7 +30,7 @@ void Player::LookExit(const World* world, const dir direction) const{
 
 }
 
-void Player::Opendoor(World* world, bool opeendor)const{
+void Player::Opendoor( World* world, const dir opeendor){
 	for (int i = 0; i < 28; i++){
 		if (world->exit[i]->origin == playerposition){
 			if (world->exit[i]->opendoor == false){
@@ -46,7 +47,7 @@ void Player::Opendoor(World* world, bool opeendor)const{
 
 
 }
-void Player::Closedoor(World* world, bool opeendor)const{
+void Player::Closedoor( World* world, const dir opeendor){
 	for (int i = 0; i < 28; i++){
 		if (world->exit[i]->origin == playerposition){
 			if (world->exit[i]->opendoor == true){
@@ -63,7 +64,7 @@ void Player::Closedoor(World* world, bool opeendor)const{
 
 
 }
-void Player::Move(const World* world,const dir direction){
+void Player::Move( World* world,const dir direction){
 
 	for (int i = 0; i < 28; i++){
 		if (world->exit[i]->origin == playerposition){ 

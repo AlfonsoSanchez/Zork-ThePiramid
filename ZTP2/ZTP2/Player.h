@@ -4,6 +4,7 @@
 #include "Room.h"
 #include "World.h"
 #include "Exit.h"
+#include "Entity.h"
 class Player{
 public:
 	Room* playerposition;
@@ -13,11 +14,11 @@ public:
 	~Player();
 
 	void Look() const;
-	void LookExit(const World* world, const dir direction )const;
-	void Opendoor(World* world, bool opendor) const;
-	void Closedoor(World* world, bool opendor) const;
+	void LookExit(World* world, const dir direction)const;
+	void Opendoor World* world, const dir direction);
+	void Closedoor(World* world, const dir direction);
 	void Help()const;
-	void Move(const World* world, const dir direction) ;
+	void Move(World* world , const dir );
 };
 
 
