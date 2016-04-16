@@ -1,21 +1,25 @@
-#include "World.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include "Room.h"
-
-
-
+#include "World.h"
+#include "Exit.h"
+#include "Player.h"
+#include "Entity.h"
 
 int main()
 {
-	bool quit = false;
+	bool play = true;
 	World* world = new World;
-	world->createworld();
+	world->CreateWorld();
 	
-	do{
-		quit = world->Input();
-	} while (quit == false);
+
+	do
+	{
+		play = world->Input();
+	} while (play == true);
 
 	delete world;
 
-
+	getchar();
+	return 0;
 }

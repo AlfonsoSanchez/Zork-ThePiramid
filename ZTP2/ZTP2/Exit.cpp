@@ -1,12 +1,10 @@
-
 #include "Exit.h"
 
-Exit::Exit(const char*nam, const char*desc, dir direct, bool opdoor, Room* origins, Room* desti) : Entity(nam,desc),direction(direct),opendoor(opdoor), origin(origins),destination(desti){
-
+Exit::Exit(const char* names, const char* descriptions, dir direct, bool open, Room* origins, Room* destination) : Entity(names, descriptions), direction(direct), Origin(origins), Destination(destination), opendoor(open)
+{
 
 }
-
-Exit::~Exit(){
-
+Exit::~Exit()
+{
 
 }

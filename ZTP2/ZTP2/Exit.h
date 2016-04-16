@@ -1,3 +1,4 @@
+
 #ifndef _EXIT_
 #define _EXIT_
 #include "Entity.h"
@@ -13,16 +14,18 @@ enum dir{
 
 class Exit : public Entity{
 public:
-	Room* origin;
-	Room* destination;
+	Room* Origin;
+	Room* Destination;
 	bool opendoor;
 	dir direction;
+
 public:
-	Exit(const char*, const char*, dir, bool, Room*, Room*);
+	Exit(const char*, const char*, dir,bool, Room*, Room*);
 	~Exit();
 
+
+
+
 };
-
-
 
 #endif

@@ -1,87 +1,131 @@
 #include "Player.h"
-#include "Entity.h"
-#include <stdio.h>
-Player::Player(Room* room): playerposition(room){
+#include "World.h"
 
-
-
-};
-
-Player::~Player(){
-
-
+Player::Player(Room* room) : Playerposition(room)
+{
 
 }
+Player::~Player()
+{
 
-void Player::Look() const {
-
-	printf("%s \n %s", playerposition->GetName(), playerposition->GetDescription);
 }
-void Player::LookExit( World* world, const dir direction) const{
-	for (int i = 0; i < 28; i++){
-		if (world->exit[i]->origin == playerposition){
-			if (world->exit[i]->direction == direction){
-				printf("%s \n", world->exit[i]->GetName());
-				printf("%s \n", world->exit[i]->GetDescription());
+void Player::look() const
+{
+	printf("%s\n", Playerposition->Getdescription());
+}
+void Player::lookalldirection(const World* world, dir direct) const
+{
+	bool test = true;
+	for (int i = 0; i < 29; i++)
+	{
+		if (world->exit[i]->Origin == Playerposition)
+		{
+			if (world->exit[i]->direction == direct)
+			{
+				printf("%s\n", world->exit[i]->Getname());
+				printf("%s\n", world->exit[i]->Getdescription());
+				test = false;
+				break;
+			}
+			else
+			{
+				printf("Nothing.");
+				break;
 			}
 		}
 	}
-
-
-}
-
-void Player::Opendoor( World* world, const dir opeendor){
-	for (int i = 0; i < 28; i++){
-		if (world->exit[i]->origin == playerposition){
-			if (world->exit[i]->opendoor == false){
-				world->exit[i]->opendoor = true;
-				printf("You opened the door");
-			}
-		}
-		else{
-			printf("THE DOOR IS ALREDY OPEN");
-
-		}
+	if (test == true)
+	{
+		printf("Nothing to see there.\n");
 	}
-
-
-
 }
-void Player::Closedoor( World* world, const dir opeendor){
-	for (int i = 0; i < 28; i++){
-		if (world->exit[i]->origin == playerposition){
-			if (world->exit[i]->opendoor == true){
-				world->exit[i]->opendoor = false;
-				printf("You close the door");
-			}
-		}
-		else{
-			printf("THE DOOR IS ALREADY CLOSE");
-
-		}
-	}
-
-
-
-}
-void Player::Move( World* world,const dir direction){
-
-	for (int i = 0; i < 28; i++){
-		if (world->exit[i]->origin == playerposition){ 
-			if (world->exit[i]->direction == direction){
-				if (world->exit[i]->opendoor == true){
-					playerposition = world->exit[i]->destination;
-					printf("%s\n %s", world->exit[i]->GetName(), world->exit[i]->GetDescription);
+void Player::opendoor(World* world, dir direct)
+{
+	bool test = true;
+	for (int i = 0; i < 29; i++)
+	{
+		if (world->exit[i]->Origin == Playerposition)
+		{
+			if (world->exit[i]->direction == direct)
+			{
+				if (world->exit[i]->opendoor == false)
+				{
+					world->exit[i]->opendoor = true;
+					printf("You opened the door.");
+					test = false;
 					break;
-
 				}
-				else{
-					printf("The door is closed \n");
+				else
+				{
+					printf("The door is already opened.");
 					break;
-
 				}
 			}
-
 		}
+	}
+	if (test == true)
+	{
+		printf("Nothing to see there.\n");
+	}
+}
+
+void Player::closedoor(World* world, dir direct)
+{
+	bool test = true;
+	for (int i = 0; i < 29; i++)
+	{
+		if (world->exit[i]->Origin == Playerposition)
+		{
+			if (world->exit[i]->direction == direct)
+			{
+				if (world->exit[i]->opendoor == true)
+				{
+					world->exit[i]->opendoor = false;
+					test = false;
+					printf("You closed the door.");
+					break;
+				}
+				else
+				{
+					printf("The door is already closed.");
+					break;
+				}
+			}
+		}
+	}
+	if (test == true)
+	{
+		printf("Nothing to see there.\n");
+	}
+}
+void Player::move(const World* world, dir direct)
+{
+	bool test = true;
+	for (int i = 0; i < 29; i++)
+	{
+		if (world->exit[i]->Origin == Playerposition)
+		{
+			if (world->exit[i]->direction == direct)
+			{
+				if (world->exit[i]->opendoor == true)
+				{
+					printf("%s\n", world->exit[i]->Destination->Getname());
+					printf("%s\n", world->exit[i]->Destination->Getdescription());
+					Playerposition = world->exit[i]->Destination;
+					test = false;
+					break;
+				}
+				else
+				{
+					printf("The door is closed.");
+					break;
+				}
+			}
+			
+		}
+	}
+	if (test == true)
+	{
+		printf("Nothing to see there.\n");
 	}
 }

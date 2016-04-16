@@ -1,18 +1,22 @@
 #include "Entity.h"
 
-Entity::Entity(const char * nam, const char* desc): name(nam), description(desc){
-
-	
-
-}
-Entity::~Entity(){
-
+Entity::Entity(const char* nam, const char* descrip)
+{
+	name = nam;
+	description = descrip;
 }
 
-char* Entity::GetName()const{
+Entity::~Entity()
+{
+
+}
+
+char* Entity::Getname() const
+{
 	return name.c_str();
 }
-char * Entity::GetDescription() const{
-	return description.c_str();
 
+char* Entity::Getdescription() const
+{
+	return description.c_str();
 }

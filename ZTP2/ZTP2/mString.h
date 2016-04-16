@@ -1,36 +1,43 @@
-#ifndef _mSTRING_
-#define _mSTRING_
+#ifndef _MSTRING_
+#define _MSTRING_
+
 #include "mVector.h"
 
 class mstring{
 private:
-	char *buffer = nullptr;
-	unsigned int maxcapacity = 0;
+	char * buffer;
+	unsigned int max_capacity = 0;
 public:
-	const char* Str() const;
 	mstring();
-	mstring(const char* STR);
-	mstring(const mstring& otherclas);
+	mstring(const char* str);
+	mstring(const mstring& str);
 	~mstring();
 
-	unsigned int c_capacity() const;
-	 char* c_str() const;
+public:
+	const char* Str() const;
+	char* c_str()const;
+	mstring allstring() const;
 	unsigned int lenght() const;
 	bool empty() const;
 	mstring operator+(const mstring& str);
-	bool operator ==(const mstring& otherclas) const;
-	bool operator ==(const char* otherstring) const;
-	bool operator !=(const char* otherstring) const;
-	void operator =(const mstring& otherclas);
-	void operator =(const char* otherstring);
-	void operator +=(const mstring& otherclas);
-	bool SameLenght(const mstring& str);
+	bool operator == (const mstring& str) const;
+	bool operator == (const char* str)const;
+	bool operator != (const char* str)const;
+	void operator = (const mstring& str);
+	void operator = (const char* str);
+	void operator +=(const mstring& str);
+	bool lenght(const mstring& str);
 	bool IsSmaller(const mstring& str);
 	void clean();
 	void set();
 	void shrinktofit();
 	void getcomand();
 	void tokenize(Vector<mstring*> &command)const;
-};
+	unsigned int c_capacity() const;
 
+
+
+
+
+};
 #endif
