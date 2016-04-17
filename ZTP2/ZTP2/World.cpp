@@ -130,8 +130,21 @@ bool World::Input()
 			return true;
 		}
 
-		
+		else if (PlayerAction[0]->allstring() == "inventory" || PlayerAction[0]->allstring() == "i")
+		{
+			
+			player[0]->Inventory();
+			}
+		else if (PlayerAction[0]->allstring() == "pick" || PlayerAction[0]->allstring() == "Pick")
+		{
 
+			player[0]->PickItem(PlayerAction[1]->c_str());
+		}
+		else if (PlayerAction[0]->allstring() == "drop" || PlayerAction[0]->allstring() == "Drop")
+		{
+
+			player[0]->DropItem(PlayerAction[1]->c_str());
+		}
 		else if (PlayerAction[0]->allstring() == "look" || PlayerAction[0]->allstring() == "l")
 		{
 			if (PlayerAction.size() == 1)
