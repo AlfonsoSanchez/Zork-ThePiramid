@@ -55,25 +55,26 @@ void World::CreateWorld()
 	Item* Potion = new Item("health potion", "restore 50% life", room[3]);
 	Item* Book = new Item("Book" ,"+5 damage ", room[2]);
 	Item* Stone = new Item("Stone", "kill 1 hit ", room[6]);
+	Item* Chest = new Item("CHEST", "you can save 4 items", room[4]);
 
 	items.pushback(Key);
 	items.pushback(Sword);
 	items.pushback(Potion);
 	items.pushback(Book);
 	items.pushback(Stone);
-
+	items.pushback(Chest);
 	room[1]->entities.pushback(items[0]);
 	room[2]->entities.pushback(items[1]);
 	room[3]->entities.pushback(items[2]);
 	room[5]->entities.pushback(items[3]);
 	room[6]->entities.pushback(items[4]);
-	
+	room[4]->entities.pushback(items[5]);
 
 	exit.pushback(new Exit("Strangle Tunnel", "You are in a narrow tunnel that seems to have no end", east, true, Entrance, StrangleTunnel));
 	exit.pushback(new Exit("Entrance", "You are at the entrance, the exit has been blocked by stones", west, true, StrangleTunnel, Entrance));
 	exit.pushback(new Exit("Strangle Room", "It seems a false room, created to lose intruders, a door is at the end of the room", south, true, StrangleTunnel, StrangleRoom));
 	exit.pushback(new Exit("Strangle Tunnel", "You are in a narrow tunnel that seems to have no end", north, true, StrangleRoom, StrangleTunnel));
-	exit.pushback(new Exit("Secret Room", "You just found a secret room, there must be something hidden", east, true, StrangleRoom, VentilationRoom));
+	exit.pushback(new Exit("Secret Room", "You just found a secret room, there must be something hidden", east, false, StrangleRoom, VentilationRoom));
 	exit.pushback(new Exit("Strangle Room", "It seems a false room, created to lose intruders, a door is at the end of the room", west, true, VentilationRoom, StrangleRoom));
 	exit.pushback(new Exit("Main Hall Initation", "you are at the beginning of the large main hall ,where to find some stairs down , no more ways", south, true, Entrance, MHI));
 	exit.pushback(new Exit("Entrance", "You are at the entrance, the exit has been blocked by stones", north, true, MHI, Entrance));
@@ -94,9 +95,9 @@ void World::CreateWorld()
 	exit.pushback(new Exit("Queen Room", "You 've just discovered the room of the queen, the coffin is opened inside the mummy of Queen armless seems that someone has removed an object that had caught on the walls you will find texts about the curse of the scepter.", south, true, MHE, QueenRoom));
 	exit.pushback(new Exit("Main Hall End", "you are at the end of main hall, you found two ways: a small cloed room or a gilded hall where a sinister noise is heard", north, true, QueenRoom, MHE));
 	exit.pushback(new Exit("King Room", "You are in the room faraon not you believe it is a door where output is around you and thousands of treasures", south, true, StrangleTunnel2, KingRoom));
-	exit.pushback(new Exit("Strangle Tunnel", "We find a very wide tunnel with natural light emanating from the end of the hall , you can see the strange paintings which tell the story of a strange magical scepter , against more advance more you smell the fresh air ", north, true, KingRoom, StrangleTunnel2));
-	exit.pushback(new Exit("Queen Room", "You 've just discovered the room of the queen, the coffin is opened inside the mummy of Queen armless seems that someone has removed an object that had caught on the walls you will find texts about the curse of the scepter.", west, true, KingRoom, QueenRoom));
-	exit.pushback(new Exit("King Room", "You are in the room faraon not you believe it is a door where output is around you and thousands of treasures", east, true, QueenRoom, KingRoom));
+	exit.pushback(new Exit("Strangle Tunnel", "We find a very wide tunnel with natural light emanating from the end of the hall , you can see the strange paintings which tell the story of a strange magical scepter , against more advance more you smell the fresh air ", north, false, KingRoom, StrangleTunnel2));
+	exit.pushback(new Exit("Queen Room", "You 've just discovered the room of the queen, the coffin is opened inside the mummy of Queen armless seems that someone has removed an object that had caught on the walls you will find texts about the curse of the scepter.", west, false, KingRoom, QueenRoom));
+	exit.pushback(new Exit("King Room", "You are in the room faraon not you believe it is a door where output is around you and thousands of treasures", east, false, QueenRoom, KingRoom));
 	player.pushback(new Player("Sito", "THE BEST", room[0]));
 
 }
@@ -129,7 +130,11 @@ bool World::Input()
 			printf("YOU CAN MOVE BY PRESSING:\nn/s/e/w\nnorth/south/east/west\ngo + north/south/east/west\n\nYOU CAN LOOK BY PRESSING:\nl\nlook\nl + room/north/south/east/west\nl + oom/north/south/east/west\nlook + room/north/south/east/west\n\nYOU CAN OPEN OR CLOSE DOORS BY PRESSING:\no/c + n/s/e/w\nopen/close + north/south/east/west\n\nYOU CAN QUIT THE GAME BY PRESSING:\nq/quit\n\n");
 			return true;
 		}
+		else if (action == "get"){
+			
+			player[0]->GetItem(this,PlayerAction[1]->c_str());
 
+		}
 		else if (PlayerAction[0]->allstring() == "inventory" || PlayerAction[0]->allstring() == "i")
 		{
 			
@@ -137,8 +142,8 @@ bool World::Input()
 			}
 		else if (PlayerAction[0]->allstring() == "pick" || PlayerAction[0]->allstring() == "Pick")
 		{
-
 			player[0]->PickItem(PlayerAction[1]->c_str());
+			
 		}
 		else if (PlayerAction[0]->allstring() == "drop" || PlayerAction[0]->allstring() == "Drop")
 		{

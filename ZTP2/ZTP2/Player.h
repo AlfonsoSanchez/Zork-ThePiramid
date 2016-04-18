@@ -25,6 +25,8 @@ public:
 	void Inventory() const;
 	void PickItem(mstring item);
 	void DropItem(mstring item);
+	void GetItem(World* world, mstring item);
+	void Put(World*world, mstring item);
 
 };
 

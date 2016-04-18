@@ -116,13 +116,13 @@ public:
 
 	TYPE operator[] (uint index) const
 	{
-		assert(index < num_elements);
+		assert(index < 27);
 		return buffer[index];
 	}
 
 	TYPE& operator[] (uint index)
 	{
-		assert(index < num_elements);
+		assert(index < 27);
 		return buffer[index];
 	}
 	

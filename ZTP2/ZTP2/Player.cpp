@@ -185,3 +185,42 @@ void Player::DropItem(mstring item){
 		printf("you dont have item");
 	}
 }
+void Player::Put(World* world, mstring item){
+	if (Playerposition == world->room[4]){
+		if (entities.size() > 0){
+			for (unsigned int i = 0; entities.size() > i; i++){
+				if (item == entities[i]->Getname()){
+					world->items[5]->entities.pushback(entities[i]);
+					printf("You put in the chest the object : %s", entities[i]->Getname());
+					entities.RemoveItem(i);
+				}
+			}
+			printf("you don't have this item");
+		}
+		else{
+			printf("You don't have any item");
+		}
+	}
+
+
+
+
+}
+void Player::GetItem(World* world, mstring  item){
+	if (Playerposition == world->room[4]){
+		
+			for (unsigned int i = 0; world->items[6]->entities.size()>i; i++){
+				if (item == world->items[6]->entities[i]->Getname()){
+					entities.pushback(world->items[6]->entities[i]);
+					printf(" You take a %s", world->items[6]->entities[i]->Getname());
+					world->items[6]->entities.RemoveItem(i);
+					return;
+				}
+				printf("Not are here");
+		}
+	
+	}
+
+	}
+
+
