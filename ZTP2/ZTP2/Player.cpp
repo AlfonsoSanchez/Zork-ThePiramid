@@ -165,8 +165,9 @@ void Player::PickItem(mstring item){
 		}
 		printf("there is nothing\n");
 	}
-
-	printf("your inventory is full\n");
+	else{
+		printf("your inventory is full\n");
+	}
 }
 
 void Player::DropItem(mstring item){
@@ -210,11 +211,11 @@ void Player::Put(World* world, mstring item){
 void Player::GetItem(World* world, mstring  item){
 	if (Playerposition == world->room[4]){
 		
-			for (unsigned int i = 0; world->items[6]->entities.size()>i; i++){
-				if (item == world->items[6]->entities[i]->Getname()){
-					entities.pushback(world->items[6]->entities[i]);
-					printf(" You take a %s", world->items[6]->entities[i]->Getname());
-					world->items[6]->entities.RemoveItem(i);
+			for (unsigned int i = 0; world->items[5]->entities.size()>i; i++){
+				if (item == world->items[5]->entities[i]->Getname()){
+					entities.pushback(world->items[5]->entities[i]);
+					printf(" You take a %s", world->items[5]->entities[i]->Getname());
+					world->items[5]->entities.RemoveItem(i);
 					return;
 				}
 				
