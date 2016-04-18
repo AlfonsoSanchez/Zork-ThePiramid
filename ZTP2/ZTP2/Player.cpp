@@ -226,5 +226,16 @@ void Player::GetItem(World* world, mstring  item){
 	}
 
 	}
+void Player::Stats(){
+	for (int i = 0; i < entities.size(); i++){
+		if (entities[i]->name == "book"){
+			attack += 5;
+		}
+		if (entities[i]->name == "book"){
+			attack += 50;
+		}
+	}
+	printf(" Life = %i \n Attack = %i \n", life, attack);
+}
 
 

@@ -24,7 +24,7 @@ void World::CreateWorld()
 	Room* StrangleTunnel = new Room("Strangle Tunnel", "You are in a narrow tunnel that seems to have no end you see a key");
 	Room* StrangleRoom = new Room("Strangle Room", "It seems a false room, created to lose intruders, a door is at the end of the room you see a book");
 	Room* SecretRoom = new Room("Secret Room", "You just found a secret room, there must be something hidden here are a chest who save items you see a potion");
-	Room* MHI = new Room("Main Hall Initation", "you are at the beginning of the large main hall ,where to find some stairs down , no more ways");
+	Room* MHI = new Room("Main Hall Initation", "you are at the beginning of the large main hall ,where to find some stairs down , no more ways you see a chest");
 	Room* MHM = new Room("Main Hall Half", "you are at the middle of the large main hall, find two paths, one to go straight and another full of boxes but is illuminated you see a sword");
 	Room* MHE = new Room("Main Hall End", "you are at the end of main hall, you found two ways: a small cloed room or a gilded hall where a sinister noise is heard you see a stone");
 	Room* DichargeRoom = new Room("Dicharge Room", "The road full of boxes has taken you to a room full of rotten food and broken vessel at the end of the room you find a strange hall");
@@ -105,8 +105,8 @@ bool World::Input()
 {
 	bool repeat = true;
 	char input[50];
-	char part1[25];  
-	char part2[25];  
+	char part1[25];
+	char part2[25];
 	char* context;
 
 	do
@@ -123,274 +123,310 @@ bool World::Input()
 		Vector < mstring* > PlayerAction;
 		action.tokenize(PlayerAction);
 
-	
+
 
 		if (action == "h" || action == "help")
 		{
 			printf("For move use north, south, east, west, up , down \n");
 			printf("For items use pick/drop/put/get + item");
-			printf("For look use l or look if u want look one direction use look and late before question insert direction");
+			printf("For open doors firs say open and late before question insert direction");
+			printf("For look use l or look if u want look + direction");
 			printf("Use h for help or q for quit  use i for inventory");
 			return true;
 		}
-		if (PlayerAction.size() == 2){
-		 if (PlayerAction[0]->allstring() == "get"){
-
-
-			player[0]->GetItem(this, PlayerAction[1]->c_str());
-
+		else if (action == "stats"){
+			player[0]->Stats();
+			return true;
 		}
-		 else if (PlayerAction[0]->allstring()== "put"){
-
-			 player[0]->Put(this, PlayerAction[1]->c_str());
-		}
-		 else if (PlayerAction[0]->allstring() == "pick" )
-		 {
-			 player[0]->PickItem(PlayerAction[1]->c_str());
-		
-
-		}
-		 else if (PlayerAction[0]->allstring() == "drop" || PlayerAction[0]->allstring() == "Drop")
-		 {
-
-			 player[0]->DropItem(PlayerAction[1]->c_str());
-
-		 }
-			
-			
+		if (PlayerAction.size() == 2){  //////////////////////////////////////////////////////////////////////////////////
+			if (PlayerAction[0]->allstring() == "get"){
 
 
-			
-			
-		}
-		 else if (PlayerAction[0]->allstring() == "inventory" || PlayerAction[0]->allstring() == "i")
-		 {
+				player[0]->GetItem(this, PlayerAction[1]->c_str());
 
-			 player[0]->Inventory();
-		 }
-		
-		else if (PlayerAction[0]->allstring() == "look" || PlayerAction[0]->allstring() == "l")
-		{
-			if (PlayerAction.size() == 1)
+			}
+			else if (PlayerAction[0]->allstring() == "put"){
+
+				player[0]->Put(this, PlayerAction[1]->c_str());
+			}
+			else if (PlayerAction[0]->allstring() == "pick")
 			{
-				player[0]->look();
+				player[0]->PickItem(PlayerAction[1]->c_str());
+
+
+			}
+			else if (PlayerAction[0]->allstring() == "drop" || PlayerAction[0]->allstring() == "Drop")
+			{
+
+				player[0]->DropItem(PlayerAction[1]->c_str());
+
 			}
 
-			else if (PlayerAction.size() > 1)
+
+			else if (PlayerAction[0]->allstring() == "look" || PlayerAction[0]->allstring() == "l")
 			{
 				if (PlayerAction[1]->allstring() == "n" || PlayerAction[1]->allstring() == "north")
 				{
 					player[0]->lookalldirection(this, north);
 				}
 
-				else if (PlayerAction[1]->allstring() == "s" || PlayerAction[1]->allstring() == "south")
+
+
+
+				if (PlayerAction[1]->allstring() == "s" || PlayerAction[1]->allstring() == "south")
 				{
 					player[0]->lookalldirection(this, south);
 				}
 
-				else if (PlayerAction[1]->allstring() == "w" || PlayerAction[1]->allstring() == "west")
+				if (PlayerAction[1]->allstring() == "w" || PlayerAction[1]->allstring() == "west")
 				{
 					player[0]->lookalldirection(this, west);
 				}
 
-				else if (PlayerAction[1]->allstring() == "e" || PlayerAction[1]->allstring() == "east")
+				if (PlayerAction[1]->allstring() == "e" || PlayerAction[1]->allstring() == "east")
 				{
 					player[0]->lookalldirection(this, east);
 				}
 
-				else if (PlayerAction[1]->allstring() == "u" || PlayerAction[1]->allstring() == "up")
+				if (PlayerAction[1]->allstring() == "u" || PlayerAction[1]->allstring() == "up")
 				{
 					player[0]->lookalldirection(this, up);
 				}
 
-				else if (PlayerAction[1]->allstring() == "d" || PlayerAction[1]->allstring() == "down")
+				if (PlayerAction[1]->allstring() == "d" || PlayerAction[1]->allstring() == "down")
 				{
 					player[0]->lookalldirection(this, down);
 				}
 			}
-
-		}
-
-		
-
-		else if (PlayerAction[0]->allstring() == "n" || PlayerAction[0]->allstring() == "north")
-		{
-			player[0]->move(this, north);
-		}
-
-		else if (PlayerAction[0]->allstring() == "s" || PlayerAction[0]->allstring() == "south")
-		{
-			player[0]->move(this, south);
-		}
-
-		else if (PlayerAction[0]->allstring() == "w" || PlayerAction[0]->allstring() == "west")
-		{
-			player[0]->move(this, west);
-		}
-
-		else if (PlayerAction[0]->allstring() == "e" || PlayerAction[0]->allstring() == "east")
-		{
-			player[0]->move(this, east);
-		}
-
-		else if (PlayerAction[0]->allstring() == "u" || PlayerAction[0]->allstring() == "up")
-		{
-			player[0]->move(this, up);
-		}
-
-		else if (PlayerAction[0]->allstring() == "d" || PlayerAction[0]->allstring() == "down")
-		{
-			player[0]->move(this, down);
-		}
-
-		else if (PlayerAction[0]->allstring() == "g" || PlayerAction[0]->allstring() == "go")
-		{
-			if (PlayerAction.size() == 1)
-			{
-				printf("Which direction? ");
-				char word2[15];
-				gets_s(word2);
-				PlayerAction.pushback(new mstring(word2));
-			}
-			if (PlayerAction.size() > 1)
+			else if (PlayerAction[0]->allstring() == "go" || PlayerAction[0]->allstring() == "g")
 			{
 				if (PlayerAction[1]->allstring() == "n" || PlayerAction[1]->allstring() == "north")
 				{
-					player[0]->move(this,north);
+					player[0]->move(this, north);
 				}
 
-				else if (PlayerAction[1]->allstring() == "s" || PlayerAction[1]->allstring() == "south")
+
+
+
+				if (PlayerAction[1]->allstring() == "s" || PlayerAction[1]->allstring() == "south")
 				{
 					player[0]->move(this, south);
 				}
 
-				else if (PlayerAction[1]->allstring() == "w" || PlayerAction[1]->allstring() == "west")
+				if (PlayerAction[1]->allstring() == "w" || PlayerAction[1]->allstring() == "west")
 				{
 					player[0]->move(this, west);
 				}
 
-				else if (PlayerAction[1]->allstring() == "e" || PlayerAction[1]->allstring() == "east")
+				if (PlayerAction[1]->allstring() == "e" || PlayerAction[1]->allstring() == "east")
 				{
 					player[0]->move(this, east);
 				}
 
-				else if (PlayerAction[1]->allstring() == "u" || PlayerAction[1]->allstring() == "up")
+				if (PlayerAction[1]->allstring() == "u" || PlayerAction[1]->allstring() == "up")
 				{
 					player[0]->move(this, up);
 				}
 
-				else if (PlayerAction[1]->allstring() == "d" || PlayerAction[1]->allstring() == "down")
+				if (PlayerAction[1]->allstring() == "d" || PlayerAction[1]->allstring() == "down")
 				{
 					player[0]->move(this, down);
 				}
 			}
 		}
 
-		
 
-		else if (PlayerAction[0]->allstring() == "open" || PlayerAction[0]->allstring() == "o")
+
+
+		else if (PlayerAction[0]->allstring() == "look" || PlayerAction[0]->allstring() == "l")
 		{
-			if (PlayerAction.size() == 1)
+
+
+			player[0]->look();
+		}
+			else if (PlayerAction[0]->allstring() == "inventory" || PlayerAction[0]->allstring() == "i")
 			{
-				printf("Which direction? ");
-				char word2[15];
-				gets_s(word2);
-				PlayerAction.pushback(new mstring(word2));
-			}
-			if (PlayerAction.size() > 1)
-			{
-				if (PlayerAction[1]->allstring() == "n" || PlayerAction[1]->allstring() == "north")
-				{
-					player[0]->opendoor(this, north);
-				}
 
-				else if (PlayerAction[1]->allstring() == "s" || PlayerAction[1]->allstring() == "south")
-				{
-					player[0]->opendoor(this, south);
-				}
-
-				else if (PlayerAction[1]->allstring() == "w" || PlayerAction[1]->allstring() == "west")
-				{
-					player[0]->opendoor(this, west);
-				}
-
-				else if (PlayerAction[1]->allstring() == "e" || PlayerAction[1]->allstring() == "east")
-				{
-					player[0]->opendoor(this, east);
-				}
-
-				else if (PlayerAction[1]->allstring() == "u" || PlayerAction[1]->allstring() == "up")
-				{
-					player[0]->opendoor(this, up);
-				}
-
-				else if (PlayerAction[1]->allstring() == "d" || PlayerAction[1]->allstring() == "down")
-				{
-					player[0]->opendoor(this, down);
-				}
+				player[0]->Inventory();
 			}
 
-		}
 
-		else if (PlayerAction[0]->allstring() == "close" || PlayerAction[0]->allstring() == "c")
-		{
-			if (PlayerAction.size() == 1)
+
+
+
+			else if (PlayerAction[0]->allstring() == "n" || PlayerAction[0]->allstring() == "north")
 			{
-				printf("Which direction? ");
-				char word2[15];
-				gets_s(word2);
-				PlayerAction.pushback(new mstring(word2));
+				player[0]->move(this, north);
 			}
-			if (PlayerAction.size() > 1)
+
+			else if (PlayerAction[0]->allstring() == "s" || PlayerAction[0]->allstring() == "south")
 			{
-				if (PlayerAction[1]->allstring() == "n" || PlayerAction[1]->allstring() == "north")
+				player[0]->move(this, south);
+			}
+
+			else if (PlayerAction[0]->allstring() == "w" || PlayerAction[0]->allstring() == "west")
+			{
+				player[0]->move(this, west);
+			}
+
+			else if (PlayerAction[0]->allstring() == "e" || PlayerAction[0]->allstring() == "east")
+			{
+				player[0]->move(this, east);
+			}
+
+			else if (PlayerAction[0]->allstring() == "u" || PlayerAction[0]->allstring() == "up")
+			{
+				player[0]->move(this, up);
+			}
+
+			else if (PlayerAction[0]->allstring() == "d" || PlayerAction[0]->allstring() == "down")
+			{
+				player[0]->move(this, down);
+			}
+
+			else if (PlayerAction[0]->allstring() == "g" || PlayerAction[0]->allstring() == "go")
+			{
+				
+				
+					if (PlayerAction[1]->allstring() == "n" || PlayerAction[1]->allstring() == "north")
+					{
+						player[0]->move(this, north);
+					}
+
+					else if (PlayerAction[1]->allstring() == "s" || PlayerAction[1]->allstring() == "south")
+					{
+						player[0]->move(this, south);
+					}
+
+					else if (PlayerAction[1]->allstring() == "w" || PlayerAction[1]->allstring() == "west")
+					{
+						player[0]->move(this, west);
+					}
+
+					else if (PlayerAction[1]->allstring() == "e" || PlayerAction[1]->allstring() == "east")
+					{
+						player[0]->move(this, east);
+					}
+
+					else if (PlayerAction[1]->allstring() == "u" || PlayerAction[1]->allstring() == "up")
+					{
+						player[0]->move(this, up);
+					}
+
+					else if (PlayerAction[1]->allstring() == "d" || PlayerAction[1]->allstring() == "down")
+					{
+						player[0]->move(this, down);
+					}
+				
+			}
+
+
+
+			else if (PlayerAction[0]->allstring() == "open" || PlayerAction[0]->allstring() == "o")
+			{
+				if (PlayerAction.size() == 1)
 				{
-					player[0]->opendoor(this,north);
+					printf("Which direction? ");
+					char word2[15];
+					gets_s(word2);
+					PlayerAction.pushback(new mstring(word2));
+				}
+				if (PlayerAction.size() > 1)
+				{
+					if (PlayerAction[1]->allstring() == "n" || PlayerAction[1]->allstring() == "north")
+					{
+						player[0]->opendoor(this, north);
+					}
+
+					else if (PlayerAction[1]->allstring() == "s" || PlayerAction[1]->allstring() == "south")
+					{
+						player[0]->opendoor(this, south);
+					}
+
+					else if (PlayerAction[1]->allstring() == "w" || PlayerAction[1]->allstring() == "west")
+					{
+						player[0]->opendoor(this, west);
+					}
+
+					else if (PlayerAction[1]->allstring() == "e" || PlayerAction[1]->allstring() == "east")
+					{
+						player[0]->opendoor(this, east);
+					}
+
+					else if (PlayerAction[1]->allstring() == "u" || PlayerAction[1]->allstring() == "up")
+					{
+						player[0]->opendoor(this, up);
+					}
+
+					else if (PlayerAction[1]->allstring() == "d" || PlayerAction[1]->allstring() == "down")
+					{
+						player[0]->opendoor(this, down);
+					}
 				}
 
-				else if (PlayerAction[1]->allstring() == "s" || PlayerAction[1]->allstring() == "south")
-				{
-					player[0]->opendoor(this, south);
-				}
+			}
 
-				else if (PlayerAction[1]->allstring() == "w" || PlayerAction[1]->allstring() == "west")
+			else if (PlayerAction[0]->allstring() == "close" || PlayerAction[0]->allstring() == "c")
+			{
+				if (PlayerAction.size() == 1)
 				{
-					player[0]->opendoor(this, west);
+					printf("Which direction? ");
+					char word2[15];
+					gets_s(word2);
+					PlayerAction.pushback(new mstring(word2));
 				}
-
-				else if (PlayerAction[1]->allstring() == "e" || PlayerAction[1]->allstring() == "east")
+				if (PlayerAction.size() > 1)
 				{
-					player[0]->opendoor(this, east);
-				}
+					if (PlayerAction[1]->allstring() == "n" || PlayerAction[1]->allstring() == "north")
+					{
+						player[0]->opendoor(this, north);
+					}
 
-				else if (PlayerAction[1]->allstring() == "u" || PlayerAction[1]->allstring() == "up")
-				{
-					player[0]->opendoor(this, up);
-				}
+					else if (PlayerAction[1]->allstring() == "s" || PlayerAction[1]->allstring() == "south")
+					{
+						player[0]->opendoor(this, south);
+					}
 
-				else if (PlayerAction[1]->allstring() == "d" || PlayerAction[1]->allstring() == "down")
-				{
-					player[0]->opendoor(this, down);
+					else if (PlayerAction[1]->allstring() == "w" || PlayerAction[1]->allstring() == "west")
+					{
+						player[0]->opendoor(this, west);
+					}
+
+					else if (PlayerAction[1]->allstring() == "e" || PlayerAction[1]->allstring() == "east")
+					{
+						player[0]->opendoor(this, east);
+					}
+
+					else if (PlayerAction[1]->allstring() == "u" || PlayerAction[1]->allstring() == "up")
+					{
+						player[0]->opendoor(this, up);
+					}
+
+					else if (PlayerAction[1]->allstring() == "d" || PlayerAction[1]->allstring() == "down")
+					{
+						player[0]->opendoor(this, down);
+					}
 				}
 			}
-		}
 
-		
-		else if (action == "q" || action == "quit")
-		{
-			printf("\nThanks for playing!\n");
-			return false;
-		}
 
-		
+			else if (action == "q" || action == "quit")
+			{
+				printf("\nThanks for playing!\n");
+				return false;
+			}
 
-		else
-		{
-			printf("Wrong input, if u need help -> h.\n");
-			return true;
-		}
-	} while (repeat == true);
-}
+
+
+			else
+			{
+				printf("Wrong input, if u need help -> h.\n");
+				return true;
+			}
+		} while (repeat == true);
+	}
+
+
 
 
 

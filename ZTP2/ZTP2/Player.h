@@ -12,6 +12,8 @@ class Player :public Entity
 
 public:
 	Room* Playerposition;
+	unsigned int life = 100;
+	unsigned int attack = 5;
 
 	Player(const char* name,const char* decription,Room* room);
 	~Player();
@@ -27,7 +29,7 @@ public:
 	void DropItem(mstring item);
 	void GetItem(World* world, mstring item);
 	void Put(World*world, mstring item);
-
+	void Stats();
 };
 
 
