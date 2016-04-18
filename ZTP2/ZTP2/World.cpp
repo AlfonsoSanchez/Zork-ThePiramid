@@ -21,12 +21,12 @@ World::~World()
 void World::CreateWorld()
 {
 	Room* Entrance = new Room("Entrance", "You are at the entrance, the exit has been blocked by stones");
-	Room* StrangleTunnel = new Room("Strangle Tunnel", "You are in a narrow tunnel that seems to have no end");
-	Room* StrangleRoom = new Room("Strangle Room", "It seems a false room, created to lose intruders, a door is at the end of the room");
-	Room* SecretRoom = new Room("Secret Room", "You just found a secret room, there must be something hidden");
+	Room* StrangleTunnel = new Room("Strangle Tunnel", "You are in a narrow tunnel that seems to have no end you see a key");
+	Room* StrangleRoom = new Room("Strangle Room", "It seems a false room, created to lose intruders, a door is at the end of the room you see a book");
+	Room* SecretRoom = new Room("Secret Room", "You just found a secret room, there must be something hidden here are a chest who save items you see a potion");
 	Room* MHI = new Room("Main Hall Initation", "you are at the beginning of the large main hall ,where to find some stairs down , no more ways");
-	Room* MHM = new Room("Main Hall Half", "you are at the middle of the large main hall, find two paths, one to go straight and another full of boxes but is illuminated");
-	Room* MHE = new Room("Main Hall End", "you are at the end of main hall, you found two ways: a small cloed room or a gilded hall where a sinister noise is heard");
+	Room* MHM = new Room("Main Hall Half", "you are at the middle of the large main hall, find two paths, one to go straight and another full of boxes but is illuminated you see a sword");
+	Room* MHE = new Room("Main Hall End", "you are at the end of main hall, you found two ways: a small cloed room or a gilded hall where a sinister noise is heard you see a stone");
 	Room* DichargeRoom = new Room("Dicharge Room", "The road full of boxes has taken you to a room full of rotten food and broken vessel at the end of the room you find a strange hall");
 	Room* StrangleTunnel2 = new Room("Strangle Tunnel", "We find a very wide tunnel with natural light emanating from the end of the hall , you can see the strange paintings which tell the story of a strange magical scepter , against more advance more you smell the fresh air ");
 	Room* VentilationRoom = new Room("Ventilation Room", "You watched the light and fresh air were coming from this room full of small ventilation holes barely enters a finger into a hole seems to be no way out.");
@@ -51,10 +51,10 @@ void World::CreateWorld()
 
 
 	Item* Key = new Item("key", "can use for open 1 door", room[1]);
-	Item* Sword = new Item("Sword" ,"+50damage ", room[5]);
+	Item* Sword = new Item("sword" ,"+50damage ", room[5]);
 	Item* Potion = new Item("health potion", "restore 50% life", room[3]);
-	Item* Book = new Item("Book" ,"+5 damage ", room[2]);
-	Item* Stone = new Item("Stone", "kill 1 hit ", room[6]);
+	Item* Book = new Item("book" ,"+5 damage ", room[2]);
+	Item* Stone = new Item("stone", "kill 1 hit ", room[6]);
 	Item* Chest = new Item("CHEST", "you can save 4 items", room[4]);
 
 	items.pushback(Key);
@@ -64,9 +64,9 @@ void World::CreateWorld()
 	items.pushback(Stone);
 	items.pushback(Chest);
 	room[1]->entities.pushback(items[0]);
-	room[2]->entities.pushback(items[1]);
+	room[5]->entities.pushback(items[1]);
 	room[3]->entities.pushback(items[2]);
-	room[5]->entities.pushback(items[3]);
+	room[2]->entities.pushback(items[3]);
 	room[6]->entities.pushback(items[4]);
 	room[4]->entities.pushback(items[5]);
 
@@ -127,29 +127,48 @@ bool World::Input()
 
 		if (action == "h" || action == "help")
 		{
-			printf("YOU CAN MOVE BY PRESSING:\nn/s/e/w\nnorth/south/east/west\ngo + north/south/east/west\n\nYOU CAN LOOK BY PRESSING:\nl\nlook\nl + room/north/south/east/west\nl + oom/north/south/east/west\nlook + room/north/south/east/west\n\nYOU CAN OPEN OR CLOSE DOORS BY PRESSING:\no/c + n/s/e/w\nopen/close + north/south/east/west\n\nYOU CAN QUIT THE GAME BY PRESSING:\nq/quit\n\n");
+			printf("For move use north, south, east, west, up , down \n");
+			printf("For items use pick/drop/put/get + item");
+			printf("For look use l or look if u want look one direction use look and late before question insert direction");
+			printf("Use h for help or q for quit  use i for inventory");
 			return true;
 		}
-		else if (action == "get"){
-			
-			player[0]->GetItem(this,PlayerAction[1]->c_str());
+		if (PlayerAction.size() == 2){
+		 if (PlayerAction[0]->allstring() == "get"){
+
+
+			player[0]->GetItem(this, PlayerAction[1]->c_str());
 
 		}
-		else if (PlayerAction[0]->allstring() == "inventory" || PlayerAction[0]->allstring() == "i")
-		{
-			
-			player[0]->Inventory();
-			}
-		else if (PlayerAction[0]->allstring() == "pick" || PlayerAction[0]->allstring() == "Pick")
-		{
-			player[0]->PickItem(PlayerAction[1]->c_str());
-			
-		}
-		else if (PlayerAction[0]->allstring() == "drop" || PlayerAction[0]->allstring() == "Drop")
-		{
+		 else if (PlayerAction[0]->allstring()== "put"){
 
-			player[0]->DropItem(PlayerAction[1]->c_str());
+			 player[0]->Put(this, PlayerAction[1]->c_str());
 		}
+		 else if (PlayerAction[0]->allstring() == "pick" )
+		 {
+			 player[0]->PickItem(PlayerAction[1]->c_str());
+		
+
+		}
+		 else if (PlayerAction[0]->allstring() == "drop" || PlayerAction[0]->allstring() == "Drop")
+		 {
+
+			 player[0]->DropItem(PlayerAction[1]->c_str());
+
+		 }
+			
+			
+
+
+			
+			
+		}
+		 else if (PlayerAction[0]->allstring() == "inventory" || PlayerAction[0]->allstring() == "i")
+		 {
+
+			 player[0]->Inventory();
+		 }
+		
 		else if (PlayerAction[0]->allstring() == "look" || PlayerAction[0]->allstring() == "l")
 		{
 			if (PlayerAction.size() == 1)
@@ -267,7 +286,7 @@ bool World::Input()
 			}
 		}
 
-		// OPEN/CLOSE ACTION ////////////////////////////
+		
 
 		else if (PlayerAction[0]->allstring() == "open" || PlayerAction[0]->allstring() == "o")
 		{

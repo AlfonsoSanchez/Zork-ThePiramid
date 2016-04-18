@@ -19,6 +19,7 @@ Player::~Player()
 void Player::look() const
 {
 	printf("%s\n", Playerposition->Getdescription());
+	
 }
 void Player::lookalldirection(const World* world, dir direct) const
 {
@@ -195,15 +196,15 @@ void Player::Put(World* world, mstring item){
 					entities.RemoveItem(i);
 				}
 			}
-			printf("you don't have this item");
+			
 		}
-		else{
-			printf("You don't have any item");
-		}
+	
+		
 	}
+	else{
+		printf("You don't have any item");
 
-
-
+	}
 
 }
 void Player::GetItem(World* world, mstring  item){
@@ -216,9 +217,12 @@ void Player::GetItem(World* world, mstring  item){
 					world->items[6]->entities.RemoveItem(i);
 					return;
 				}
-				printf("Not are here");
+				
 		}
 	
+	}
+	else {
+		printf("Not are here");
 	}
 
 	}
