@@ -7,6 +7,7 @@
 #include "Room.h"
 #include "Player.h"
 #include "Exit.h"
+#include "NPC.h"
 
 World::World()
 {
@@ -33,7 +34,7 @@ void World::CreateWorld()
 	Room* QueenRoom = new Room("Queen Room", "You 've just discovered the room of the queen, the coffin is opened inside the mummy of Queen armless seems that someone has removed an object that had caught on the walls you will find texts about the curse of the scepter.");
 	Room* KingRoom = new Room("King Room", "You are in the room faraon not you believe it is a door where output is around you and thousands of treasures");
 
-	//player.pushback(new Player(room[0]));
+	
 
 
 	room.pushback(Entrance);
@@ -98,6 +99,13 @@ void World::CreateWorld()
 	exit.pushback(new Exit("Strangle Tunnel", "We find a very wide tunnel with natural light emanating from the end of the hall , you can see the strange paintings which tell the story of a strange magical scepter , against more advance more you smell the fresh air ", north, false, KingRoom, StrangleTunnel2));
 	exit.pushback(new Exit("Queen Room", "You 've just discovered the room of the queen, the coffin is opened inside the mummy of Queen armless seems that someone has removed an object that had caught on the walls you will find texts about the curse of the scepter.", west, false, KingRoom, QueenRoom));
 	exit.pushback(new Exit("King Room", "You are in the room faraon not you believe it is a door where output is around you and thousands of treasures", east, false, QueenRoom, KingRoom));
+
+	npc.pushback(new NPC("Mini mummy", "a little mummy, he attack very fast but don't have a lot of damage", MHI));
+	npc.pushback(new NPC("Mini mummy", "a little mummy, he attack very fast but don't have a lot of damage", DichargeRoom));
+	npc.pushback(new NPC("Spider", "i'ts a vulgar spider", StrangleTunnel));
+	npc.pushback(new NPC("Spider", "i'ts a vulgar spider", StrangleTunnel2));
+	npc.pushback(new NPC("The Queen", "i'ts the Queen, i'ts very dangerouse she attack very slowly but the damage are elevated", QueenRoom));
+	npc.pushback(new NPC("Tutankamon", "i'ts the King, final boos, you can win??¿", KingRoom));
 	player.pushback(new Player("Sito", "THE BEST", room[0]));
 
 }

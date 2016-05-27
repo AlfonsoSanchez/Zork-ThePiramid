@@ -9,7 +9,7 @@
 class Item;
 class Room;
 class Exit;
-
+class NPC;
 class Player;
 
 
@@ -23,6 +23,7 @@ public:
 	Vector <Player*> player;
 	Vector <Room*> room;
 	Vector <Exit*> exit;
+	Vector <NPC*> npc;
 
 	void CreateWorld();
 	const void WorldIntro();
